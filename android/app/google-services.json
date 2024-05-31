@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "772548463170",
+    "project_id": "cant-wait-4090",
+    "storage_bucket": "cant-wait-4090.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:772548463170:android:93f580a963b55440eb7bdb",
+        "android_client_info": {
+          "package_name": "com.jakubzawada.drop_check"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "772548463170-oqjo8t3us0vlc5l1v6ltigihejp9j3jo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgc-104-Bn-3AtYMmLww0M4gqLUnFHEWc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "772548463170-oqjo8t3us0vlc5l1v6ltigihejp9j3jo.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "772548463170-ah2idofbug8eq984sm8f9tbjeboeqe7j.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.jakubzawada.cantwait28"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,4 +1,4 @@
-package com.example.drop_check
+package com.jakubzawada.drop_check
 
 import io.flutter.embedding.android.FlutterActivity
 
