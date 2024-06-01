@@ -1,3 +1,4 @@
+import 'package:drop_check/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 class IntroNotificationsPage extends StatefulWidget {
@@ -152,9 +153,11 @@ class _IntroNotificationsPageState extends State<IntroNotificationsPage> {
               const SizedBox(height: 5),
               GestureDetector(
                 onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const IntroNotificationsPage())),
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const HomePage(),
+                  ),
+                ),
                 child: Container(
                   decoration: BoxDecoration(
                     color: Colors.grey[900],
