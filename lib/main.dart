@@ -1,5 +1,8 @@
+import 'package:drop_check/models/accessible_shoe_cart_model.dart';
+import 'package:drop_check/models/shoe_cart_model.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:drop_check/pages/intro_page.dart';
@@ -18,14 +21,27 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    return MultiProvider(
+      // Zmiana ChangeNotifierProvider na MultiProvider
+      providers: [
+        ChangeNotifierProvider(create: (_) => Cart()),
+        ChangeNotifierProvider(
+            create: (_) =>
+                AccessibleCart()), // Dodanie AccessibleCart do MultiProvider
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: const InitialScreen(),
+        routes: {
+          'intro_page': (context) => const IntroPage(),
+          'home_page': (context) => const HomePage(),
+        },
       ),
-      home: const InitialScreen(),
     );
   }
 }
@@ -34,10 +50,10 @@ class InitialScreen extends StatefulWidget {
   const InitialScreen({super.key});
 
   @override
-  _InitialScreenState createState() => _InitialScreenState();
+  InitialScreenState createState() => InitialScreenState();
 }
 
-class _InitialScreenState extends State<InitialScreen> {
+class InitialScreenState extends State<InitialScreen> {
   bool _isFirstRun = true;
 
   @override

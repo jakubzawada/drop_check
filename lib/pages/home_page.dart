@@ -16,7 +16,7 @@ class _HomePageState extends State<HomePage> {
   bool dropIsSwitched = true;
   bool saleIsSwitched = true;
   bool otherIsSwitched = true;
-  bool darkModeIsSwitched = true;
+  bool darkModeIsSwitched = false;
 
   void navigateBottomBar(int index) {
     setState(() {
@@ -52,7 +52,6 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       drawer: Drawer(
-        backgroundColor: Colors.grey[300],
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10.0),
           child: Padding(
@@ -70,13 +69,13 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
                       'Powiadomienia',
                       style: TextStyle(
-                        color: Colors.black,
+                        color: Colors.grey[600],
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
                       ),
@@ -99,13 +98,17 @@ class _HomePageState extends State<HomePage> {
                           fontSize: 14,
                         ),
                       ),
-                      Switch.adaptive(
+                      Transform.scale(
+                        scale: 0.75,
+                        child: Switch.adaptive(
                           value: dropIsSwitched,
                           onChanged: (bool value) {
                             setState(() {
                               dropIsSwitched = value;
                             });
-                          }),
+                          },
+                        ),
+                      )
                     ],
                   ),
                 ),
@@ -125,13 +128,16 @@ class _HomePageState extends State<HomePage> {
                           fontSize: 14,
                         ),
                       ),
-                      Switch.adaptive(
-                          value: saleIsSwitched,
-                          onChanged: (bool value) {
-                            setState(() {
-                              saleIsSwitched = value;
-                            });
-                          }),
+                      Transform.scale(
+                        scale: 0.75,
+                        child: Switch.adaptive(
+                            value: saleIsSwitched,
+                            onChanged: (bool value) {
+                              setState(() {
+                                saleIsSwitched = value;
+                              });
+                            }),
+                      ),
                     ],
                   ),
                 ),
@@ -151,13 +157,16 @@ class _HomePageState extends State<HomePage> {
                           fontSize: 14,
                         ),
                       ),
-                      Switch.adaptive(
-                          value: otherIsSwitched,
-                          onChanged: (bool value) {
-                            setState(() {
-                              otherIsSwitched = value;
-                            });
-                          }),
+                      Transform.scale(
+                        scale: 0.75,
+                        child: Switch.adaptive(
+                            value: otherIsSwitched,
+                            onChanged: (bool value) {
+                              setState(() {
+                                otherIsSwitched = value;
+                              });
+                            }),
+                      ),
                     ],
                   ),
                 ),
@@ -166,13 +175,13 @@ class _HomePageState extends State<HomePage> {
                   color: Colors.grey[600],
                 ),
                 const SizedBox(height: 20),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
                       'Ogólne',
                       style: TextStyle(
-                        color: Colors.black,
+                        color: Colors.grey[600],
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
                       ),
@@ -200,13 +209,16 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ],
                       ),
-                      Switch.adaptive(
-                          value: darkModeIsSwitched,
-                          onChanged: (bool value) {
-                            setState(() {
-                              darkModeIsSwitched = value;
-                            });
-                          }),
+                      Transform.scale(
+                        scale: 0.75,
+                        child: Switch.adaptive(
+                            value: darkModeIsSwitched,
+                            onChanged: (bool value) {
+                              setState(() {
+                                darkModeIsSwitched = value;
+                              });
+                            }),
+                      ),
                     ],
                   ),
                 ),
@@ -214,6 +226,22 @@ class _HomePageState extends State<HomePage> {
                   thickness: 0.5,
                   color: Colors.grey[600],
                 ),
+                const Spacer(),
+                ListTile(
+                  onTap: () => Navigator.pushNamedAndRemoveUntil(
+                      context, 'home_page', (route) => false),
+                  leading: Icon(
+                    Icons.logout,
+                    color: Colors.grey[800],
+                  ),
+                  title: Text(
+                    'Wyjście',
+                    style: TextStyle(
+                      color: Colors.grey[800],
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 40),
               ],
             ),
           ),
