@@ -1,61 +1,34 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:drop_check/models/accessible_shoe_drop_model.dart';
 import 'package:flutter/material.dart';
 
 class AccessibleCart extends ChangeNotifier {
-  //
-  List<AccessibleShoeDropModel> accessibleShoeShop = [
-    AccessibleShoeDropModel(
-      name: 'Jordann 1 Low Quai',
-      price: '1430',
-      imagePath: 'lib/images/jordan1LowQuai.webp',
-      description: '',
-      dropTime: '03.06 | 9:00',
-    ),
-    AccessibleShoeDropModel(
-      name: 'Jordan 1 Obsidian',
-      price: '2460',
-      imagePath: 'lib/images/jordanUNC.jpg',
-      description: '',
-      dropTime: '03.06 | 9:00',
-    ),
-    AccessibleShoeDropModel(
-      name: 'Jordan 4 Retro Frozen',
-      price: '2380',
-      imagePath: 'lib/images/jordan4retrofrozenmoments2.jpg',
-      description: '',
-      dropTime: '03.06 | 11:00',
-    ),
-    AccessibleShoeDropModel(
-      name: 'Jordan 1 TravisScott',
-      price: '4800',
-      imagePath: 'lib/images/jordanTravis.webp',
-      description: '',
-      dropTime: '02.06 | 12:00',
-    ),
-  ];
+  List<AccessibleShoeDropModel> accessibleShoeShop = [];
 
-  // list of items in user cart
-  List<AccessibleShoeDropModel> userCart = [];
+  AccessibleCart() {
+    accessibleFetchShoes();
+  }
 
-  // get list of shoes for sale
+  Future<void> accessibleFetchShoes() async {
+    try {
+      QuerySnapshot snapshot =
+          await FirebaseFirestore.instance.collection('accessibledrops').get();
+      accessibleShoeShop = snapshot.docs.map((doc) {
+        return AccessibleShoeDropModel(
+          name: doc['name'],
+          price: doc['price'],
+          imagePath: doc['imagePath'],
+          description: doc['description'],
+          dropTime: doc['dropTime'],
+        );
+      }).toList();
+      notifyListeners();
+    } catch (e) {
+      print('Error fetching shoes: $e');
+    }
+  }
+
   List<AccessibleShoeDropModel> getAccessibleShoeList() {
     return accessibleShoeShop;
-  }
-
-  // get cart
-  List<AccessibleShoeDropModel> getUserCart() {
-    return userCart;
-  }
-
-  // add items to cart
-  void addItemToCart(AccessibleShoeDropModel accessibleShoe) {
-    userCart.add(accessibleShoe);
-    notifyListeners();
-  }
-
-  // remove items from cart
-  void removeItemFromCart(AccessibleShoeDropModel accessibleShoe) {
-    userCart.remove(accessibleShoe);
-    notifyListeners();
   }
 }

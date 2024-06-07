@@ -25,7 +25,7 @@ class AccessibleShoeDropTile extends StatelessWidget {
                 Flexible(
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(12),
-                    child: Image.asset(
+                    child: Image.network(
                       accessibleShoe.imagePath,
                     ),
                   ),

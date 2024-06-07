@@ -40,6 +40,8 @@ dependencies:
   shared_preferences_android: ^2.2.2
   shared_preferences: ^2.2.3
   provider: ^6.1.2
+  firebase_database: ^10.4.9
+  cloud_firestore: ^4.15.8
 
 dev_dependencies:
   flutter_test:

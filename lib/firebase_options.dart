@@ -65,4 +65,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'cant-wait-4090.appspot.com',
     iosBundleId: 'com.jakubzawada.dropCheck',
   );
+
 }

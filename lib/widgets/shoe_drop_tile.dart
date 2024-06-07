@@ -16,7 +16,6 @@ class ShoeDropTile extends StatelessWidget {
       ),
       child: Column(
         children: [
-          // shoe pic
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: Row(
@@ -25,7 +24,7 @@ class ShoeDropTile extends StatelessWidget {
                 Flexible(
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(12),
-                    child: Image.asset(
+                    child: Image.network(
                       shoe.imagePath,
                     ),
                   ),
