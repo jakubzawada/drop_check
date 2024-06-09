@@ -1,6 +1,6 @@
-import 'package:drop_check/pages/drop_page.dart';
-import 'package:drop_check/pages/news_page.dart';
-import 'package:drop_check/pages/sale_page.dart';
+import 'package:drop_check/app/home/pages/drop_page.dart';
+import 'package:drop_check/app/home/pages/news_page.dart';
+import 'package:drop_check/app/home/pages/sale_page.dart';
 import 'package:drop_check/widgets/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 

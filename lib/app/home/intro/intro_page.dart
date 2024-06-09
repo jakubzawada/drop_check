@@ -1,4 +1,4 @@
-import 'package:drop_check/pages/intro_notifications_page.dart';
+import 'package:drop_check/app/home/intro/intro_notifications_page.dart';
 import 'package:flutter/material.dart';
 
 class IntroPage extends StatelessWidget {

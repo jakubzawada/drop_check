@@ -1,4 +1,4 @@
-import 'package:drop_check/pages/home_page.dart';
+import 'package:drop_check/app/home/home_page.dart';
 import 'package:flutter/material.dart';
 
 class IntroNotificationsPage extends StatefulWidget {

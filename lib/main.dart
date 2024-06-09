@@ -5,8 +5,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:drop_check/pages/intro_page.dart';
-import 'package:drop_check/pages/home_page.dart';
+import 'package:drop_check/app/home/intro/intro_page.dart';
+import 'package:drop_check/app/home/home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

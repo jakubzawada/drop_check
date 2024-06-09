@@ -20,6 +20,7 @@ class Cart extends ChangeNotifier {
           imagePath: doc['imagePath'],
           description: doc['description'],
           dropTime: doc['dropTime'],
+          dropLink: doc['dropLink'],
         );
       }).toList();
       notifyListeners();

@@ -4,6 +4,7 @@ class ShoeDropModel {
   final String imagePath;
   final String description;
   final String dropTime;
+  final String dropLink;
 
   ShoeDropModel({
     required this.name,
@@ -11,5 +12,6 @@ class ShoeDropModel {
     required this.imagePath,
     required this.description,
     required this.dropTime,
+    required this.dropLink,
   });
 }
