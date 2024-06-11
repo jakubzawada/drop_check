@@ -2,10 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'shoe_drop_model.dart';
 
-class Cart extends ChangeNotifier {
+class ShoeCart extends ChangeNotifier {
   List<ShoeDropModel> shoeShop = [];
 
-  Cart() {
+  ShoeCart() {
     fetchShoes();
   }
 

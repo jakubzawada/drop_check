@@ -1,5 +1,8 @@
 import 'package:drop_check/models/accessible_shoe_cart_model.dart';
+import 'package:drop_check/models/man_sale_cart_model.dart';
+import 'package:drop_check/models/other_sale_cart_model.dart';
 import 'package:drop_check/models/shoe_cart_model.dart';
+import 'package:drop_check/models/woman_sale_cart_model.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
@@ -24,10 +27,11 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       // Zmiana ChangeNotifierProvider na MultiProvider
       providers: [
-        ChangeNotifierProvider(create: (_) => Cart()),
-        ChangeNotifierProvider(
-            create: (_) =>
-                AccessibleCart()), // Dodanie AccessibleCart do MultiProvider
+        ChangeNotifierProvider(create: (_) => OtherSaleCart()),
+        ChangeNotifierProvider(create: (_) => ManSaleCart()),
+        ChangeNotifierProvider(create: (_) => WomanSaleCart()),
+        ChangeNotifierProvider(create: (_) => ShoeCart()),
+        ChangeNotifierProvider(create: (_) => AccessibleShoeCart()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

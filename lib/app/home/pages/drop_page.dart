@@ -95,7 +95,7 @@ class _DropPageState extends State<DropPage> {
           const SizedBox(height: 20),
           Expanded(
             child: showAccessible
-                ? Consumer<AccessibleCart>(
+                ? Consumer<AccessibleShoeCart>(
                     builder: (context, accessibleCart, child) {
                       return ListView.builder(
                         itemCount:
@@ -111,7 +111,7 @@ class _DropPageState extends State<DropPage> {
                       );
                     },
                   )
-                : Consumer<Cart>(
+                : Consumer<ShoeCart>(
                     builder: (context, cart, child) {
                       return ListView.builder(
                         itemCount: cart.getShoeList().length,

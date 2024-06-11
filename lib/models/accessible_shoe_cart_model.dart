@@ -2,17 +2,17 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:drop_check/models/accessible_shoe_drop_model.dart';
 import 'package:flutter/material.dart';
 
-class AccessibleCart extends ChangeNotifier {
+class AccessibleShoeCart extends ChangeNotifier {
   List<AccessibleShoeDropModel> accessibleShoeShop = [];
 
-  AccessibleCart() {
+  AccessibleShoeCart() {
     accessibleFetchShoes();
   }
 
   Future<void> accessibleFetchShoes() async {
     try {
       QuerySnapshot snapshot =
-          await FirebaseFirestore.instance.collection('accessibledrops').get();
+          await FirebaseFirestore.instance.collection('accessibleDrops').get();
       accessibleShoeShop = snapshot.docs.map((doc) {
         return AccessibleShoeDropModel(
           name: doc['name'],
