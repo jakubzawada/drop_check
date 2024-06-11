@@ -1,83 +1,92 @@
+import 'package:drop_check/app/home/pages/detail%20pages/other_sale_detail_page.dart';
 import 'package:drop_check/models/other_sale_model.dart';
 import 'package:flutter/material.dart';
 
 class OtherSaleTile extends StatelessWidget {
-  OtherSaleModel otherSale;
-  OtherSaleTile({super.key, required this.otherSale});
+  const OtherSaleTile({Key? key, required this.otherSale}) : super(key: key);
+  final OtherSaleModel otherSale;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => OtherSaleDetailPage(
+              otherSale: otherSale,
+            ),
+          ),
+        );
+      },
       child: Container(
         margin: const EdgeInsets.only(left: 25, right: 25, bottom: 10),
-        width: 200,
         decoration: BoxDecoration(
           color: Colors.grey[100],
           borderRadius: BorderRadius.circular(12),
         ),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Flexible(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(12),
-                      child: Image.network(
-                        otherSale.imagePath,
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Row(
+            children: [
+              Flexible(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: Image.network(
+                    otherSale.imagePath,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 20),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Text(
+                        '${otherSale.discountPercent}%',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                  ),
-                  Flexible(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    const SizedBox(height: 5),
+                    Text(
+                      otherSale.name,
+                      style: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      maxLines: 2, // Ogranicz tekst do 2 linii
+                      overflow: TextOverflow
+                          .ellipsis, // Dodaj elipsę, jeśli tekst jest za długi
+                    ),
+                    const SizedBox(height: 5),
+                    Row(
                       children: [
-                        Container(
-                          padding: const EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            color: Colors.red,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Text(
-                            '${otherSale.discountPercent}%',
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 5),
+                        Text('${otherSale.price}zł'),
+                        const SizedBox(width: 10),
                         Text(
-                          otherSale.name,
+                          '${otherSale.priceBefore}zł',
                           style: const TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
+                            decoration: TextDecoration.lineThrough,
+                            color: Colors.grey,
                           ),
-                          softWrap: true,
-                        ),
-                        const SizedBox(height: 5),
-                        Row(
-                          children: [
-                            Text('${otherSale.price}zł'),
-                            Text(
-                              '${otherSale.priceBefore}zł',
-                              style: const TextStyle(
-                                decoration: TextDecoration.lineThrough,
-                              ),
-                            ),
-                          ],
                         ),
                       ],
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
