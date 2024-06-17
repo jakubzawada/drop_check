@@ -1,4 +1,5 @@
 import 'package:drop_check/models/accessible_shoe_cart_model.dart';
+import 'package:drop_check/models/best_sale_cart_model.dart';
 import 'package:drop_check/models/man_sale_cart_model.dart';
 import 'package:drop_check/models/other_sale_cart_model.dart';
 import 'package:drop_check/models/shoe_cart_model.dart';
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => WomanSaleCart()),
         ChangeNotifierProvider(create: (_) => ShoeCart()),
         ChangeNotifierProvider(create: (_) => AccessibleShoeCart()),
+        ChangeNotifierProvider(create: (_) => BestSaleCart()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
