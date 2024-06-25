@@ -5,6 +5,7 @@ class ManSaleModel {
   final String priceBefore;
   final String discountPercent;
   final String dropLink;
+  final String description;
 
   ManSaleModel({
     required this.imagePath,
@@ -13,5 +14,6 @@ class ManSaleModel {
     required this.priceBefore,
     required this.discountPercent,
     required this.dropLink,
+    required this.description,
   });
 }

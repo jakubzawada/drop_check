@@ -25,10 +25,15 @@ class BestSaleDetailPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Flexible(
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: Image.network(bestSale.imagePath),
+            Center(
+              child: Flexible(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: Image.network(
+                    bestSale.imagePath,
+                    height: 340,
+                  ),
+                ),
               ),
             ),
             const SizedBox(height: 16.0),
@@ -41,37 +46,49 @@ class BestSaleDetailPage extends StatelessWidget {
             ),
             const SizedBox(height: 8.0),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  '${bestSale.price}zł',
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    color: Colors.grey[700],
-                  ),
+                Row(
+                  children: [
+                    Text(
+                      '${bestSale.price}zł',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.grey[700],
+                      ),
+                    ),
+                    const SizedBox(width: 5),
+                    Text(
+                      '${bestSale.priceBefore}zł',
+                      style: const TextStyle(
+                        decoration: TextDecoration.lineThrough,
+                      ),
+                    ),
+                  ],
                 ),
-                const SizedBox(width: 5),
-                Text(
-                  '${bestSale.priceBefore}zł',
-                  style: const TextStyle(
-                    decoration: TextDecoration.lineThrough,
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.red,
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                  child: Text(
+                    '${bestSale.discountPercent}%',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ],
             ),
-            const SizedBox(height: 16.0),
-            Container(
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: Colors.red,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Text(
-                '${bestSale.discountPercent}%',
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold,
-                ),
+            const SizedBox(height: 10.0),
+            Text(
+              bestSale.description,
+              style: TextStyle(
+                fontSize: 16.0,
+                color: Colors.grey[700],
               ),
             ),
             const SizedBox(height: 16.0),
@@ -101,6 +118,7 @@ class BestSaleDetailPage extends StatelessWidget {
                 ),
               ],
             ),
+            const SizedBox(height: 20.0),
           ],
         ),
       ),

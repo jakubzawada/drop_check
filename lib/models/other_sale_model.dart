@@ -5,6 +5,7 @@ class OtherSaleModel {
   final String priceBefore;
   final String discountPercent;
   final String dropLink;
+  final String description;
 
   OtherSaleModel({
     required this.imagePath,
@@ -13,5 +14,6 @@ class OtherSaleModel {
     required this.priceBefore,
     required this.discountPercent,
     required this.dropLink,
+    required this.description,
   });
 }
