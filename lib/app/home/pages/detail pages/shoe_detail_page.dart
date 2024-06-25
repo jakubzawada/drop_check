@@ -25,10 +25,15 @@ class ShoeDetailPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Flexible(
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: Image.network(shoe.imagePath),
+            Center(
+              child: Flexible(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: Image.network(
+                    shoe.imagePath,
+                    height: 320,
+                  ),
+                ),
               ),
             ),
             const SizedBox(height: 16.0),

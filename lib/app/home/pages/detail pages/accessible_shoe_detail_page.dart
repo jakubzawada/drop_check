@@ -25,10 +25,15 @@ class AccessibleShoeDetailPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Flexible(
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: Image.network(accessibleShoe.imagePath),
+            Center(
+              child: Flexible(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: Image.network(
+                    accessibleShoe.imagePath,
+                    height: 320,
+                  ),
+                ),
               ),
             ),
             const SizedBox(height: 16.0),
@@ -90,6 +95,7 @@ class AccessibleShoeDetailPage extends StatelessWidget {
                 ),
               ],
             ),
+            const SizedBox(height: 20.0),
           ],
         ),
       ),

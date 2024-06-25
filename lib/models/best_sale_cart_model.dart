@@ -21,6 +21,7 @@ class BestSaleCart extends ChangeNotifier {
           dropLink: doc['dropLink'],
           priceBefore: doc['priceBefore'],
           discountPercent: doc['discountPercent'],
+          description: doc['description'],
         );
       }).toList();
       notifyListeners();

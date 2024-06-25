@@ -5,6 +5,7 @@ class BestSaleModel {
   final String priceBefore;
   final String discountPercent;
   final String dropLink;
+  final String description;
 
   BestSaleModel({
     required this.imagePath,
@@ -13,5 +14,6 @@ class BestSaleModel {
     required this.priceBefore,
     required this.discountPercent,
     required this.dropLink,
+    required this.description,
   });
 }
