@@ -1,3 +1,5 @@
+import 'package:drop_check/api/firebase_api.dart';
+import 'package:drop_check/app/home/pages/notifications_page.dart';
 import 'package:drop_check/models/accessible_shoe_cart_model.dart';
 import 'package:drop_check/models/best_sale_cart_model.dart';
 import 'package:drop_check/models/man_sale_cart_model.dart';
@@ -5,6 +7,7 @@ import 'package:drop_check/models/newsfeed_cart_model.dart';
 import 'package:drop_check/models/other_sale_cart_model.dart';
 import 'package:drop_check/models/shoe_cart_model.dart';
 import 'package:drop_check/models/woman_sale_cart_model.dart';
+import 'package:drop_check/widgets/notification_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
@@ -13,11 +16,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:drop_check/app/home/intro/intro_page.dart';
 import 'package:drop_check/app/home/home_page.dart';
 
+final navigatorKey = GlobalKey<NavigatorState>();
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await FirebaseApi().initNotifications();
   runApp(const MyApp());
 }
 
@@ -36,6 +42,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => AccessibleShoeCart()),
         ChangeNotifierProvider(create: (_) => BestSaleCart()),
         ChangeNotifierProvider(create: (_) => NewsfeedCart()),
+        ChangeNotifierProvider(create: (_) => NotificationSettings()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -45,9 +52,11 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         home: const InitialScreen(),
+        navigatorKey: navigatorKey,
         routes: {
           'intro_page': (context) => const IntroPage(),
           'home_page': (context) => const HomePage(),
+          '/notification_screen': (context) => const NotificationPage(),
         },
       ),
     );

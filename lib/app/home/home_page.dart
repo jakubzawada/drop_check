@@ -2,7 +2,9 @@ import 'package:drop_check/app/home/pages/drop_page.dart';
 import 'package:drop_check/app/home/pages/news_page.dart';
 import 'package:drop_check/app/home/pages/sale_page.dart';
 import 'package:drop_check/widgets/bottom_nav_bar.dart';
+import 'package:drop_check/widgets/notification_settings.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -13,10 +15,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
-  bool dropIsSwitched = true;
-  bool saleIsSwitched = true;
-  bool otherIsSwitched = true;
-  bool darkModeIsSwitched = false;
 
   void navigateBottomBar(int index) {
     setState(() {
@@ -32,6 +30,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    var notificationSettings = Provider.of<NotificationSettings>(context);
+
     return Scaffold(
       backgroundColor: Colors.grey[300],
       bottomNavigationBar: MyBottomNavBar(
@@ -101,11 +101,9 @@ class _HomePageState extends State<HomePage> {
                       Transform.scale(
                         scale: 0.75,
                         child: Switch.adaptive(
-                          value: dropIsSwitched,
+                          value: notificationSettings.dropIsSwitched,
                           onChanged: (bool value) {
-                            setState(() {
-                              dropIsSwitched = value;
-                            });
+                            notificationSettings.toggleDrop(value);
                           },
                         ),
                       )
@@ -122,7 +120,7 @@ class _HomePageState extends State<HomePage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text(
-                        'Promocje',
+                        'Promocje Męskie',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 14,
@@ -131,12 +129,39 @@ class _HomePageState extends State<HomePage> {
                       Transform.scale(
                         scale: 0.75,
                         child: Switch.adaptive(
-                            value: saleIsSwitched,
-                            onChanged: (bool value) {
-                              setState(() {
-                                saleIsSwitched = value;
-                              });
-                            }),
+                          value: notificationSettings.manSaleIsSwitched,
+                          onChanged: (bool value) {
+                            notificationSettings.toggleManSale(value);
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Divider(
+                  thickness: 0.5,
+                  color: Colors.grey[600],
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        'Promocje Damskie',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                        ),
+                      ),
+                      Transform.scale(
+                        scale: 0.75,
+                        child: Switch.adaptive(
+                          value: notificationSettings.womanSaleIsSwitched,
+                          onChanged: (bool value) {
+                            notificationSettings.toggleWomanSale(value);
+                          },
+                        ),
                       ),
                     ],
                   ),
@@ -160,12 +185,11 @@ class _HomePageState extends State<HomePage> {
                       Transform.scale(
                         scale: 0.75,
                         child: Switch.adaptive(
-                            value: otherIsSwitched,
-                            onChanged: (bool value) {
-                              setState(() {
-                                otherIsSwitched = value;
-                              });
-                            }),
+                          value: notificationSettings.otherIsSwitched,
+                          onChanged: (bool value) {
+                            notificationSettings.toggleOther(value);
+                          },
+                        ),
                       ),
                     ],
                   ),
@@ -212,12 +236,11 @@ class _HomePageState extends State<HomePage> {
                       Transform.scale(
                         scale: 0.75,
                         child: Switch.adaptive(
-                            value: darkModeIsSwitched,
-                            onChanged: (bool value) {
-                              setState(() {
-                                darkModeIsSwitched = value;
-                              });
-                            }),
+                          value: notificationSettings.darkModeIsSwitched,
+                          onChanged: (bool value) {
+                            notificationSettings.toggleDarkMode(value);
+                          },
+                        ),
                       ),
                     ],
                   ),
@@ -229,7 +252,7 @@ class _HomePageState extends State<HomePage> {
                 const Spacer(),
                 ListTile(
                   onTap: () => Navigator.pushNamedAndRemoveUntil(
-                      context, 'home_page', (route) => false),
+                      context, 'intro_page', (route) => false),
                   leading: Icon(
                     Icons.logout,
                     color: Colors.grey[800],

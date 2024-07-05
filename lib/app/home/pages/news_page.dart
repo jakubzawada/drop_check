@@ -1,7 +1,6 @@
 import 'package:drop_check/models/best_sale_cart_model.dart';
 import 'package:drop_check/models/best_sale_model.dart';
 import 'package:drop_check/models/newsfeed_cart_model.dart';
-import 'package:drop_check/models/newsfeed_model.dart';
 import 'package:drop_check/widgets/best_sale_tile.dart';
 import 'package:drop_check/widgets/newsfeed_tile.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +39,7 @@ class _NewsPageState extends State<NewsPage> {
             ),
             const SizedBox(height: 20),
             SizedBox(
-              height: 180, // Ustaw odpowiednią wysokość dla sekcji "Okazje"
+              height: 180,
               child: Consumer<BestSaleCart>(
                 builder: (context, bestSaleCart, child) {
                   return ListView.builder(

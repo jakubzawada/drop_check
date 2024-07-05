@@ -43,6 +43,8 @@ dependencies:
   firebase_database: ^10.4.9
   cloud_firestore: ^4.15.8
   url_launcher: ^6.3.0
+  firebase_messaging: ^14.7.19
+  firebase_analytics: ^10.8.9
 
 dev_dependencies:
   flutter_test:

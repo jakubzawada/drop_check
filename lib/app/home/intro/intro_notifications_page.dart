@@ -1,5 +1,7 @@
 import 'package:drop_check/app/home/home_page.dart';
+import 'package:drop_check/widgets/notification_settings.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class IntroNotificationsPage extends StatefulWidget {
   const IntroNotificationsPage({super.key});
@@ -9,11 +11,10 @@ class IntroNotificationsPage extends StatefulWidget {
 }
 
 class _IntroNotificationsPageState extends State<IntroNotificationsPage> {
-  bool dropIsSwitched = true;
-  bool saleIsSwitched = true;
-  bool otherIsSwitched = true;
   @override
   Widget build(BuildContext context) {
+    var notificationSettings = Provider.of<NotificationSettings>(context);
+
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
@@ -71,12 +72,11 @@ class _IntroNotificationsPageState extends State<IntroNotificationsPage> {
                       ),
                     ),
                     Switch.adaptive(
-                        value: dropIsSwitched,
-                        onChanged: (bool value) {
-                          setState(() {
-                            dropIsSwitched = value;
-                          });
-                        }),
+                      value: notificationSettings.dropIsSwitched,
+                      onChanged: (bool value) {
+                        notificationSettings.toggleDrop(value);
+                      },
+                    ),
                   ],
                 ),
               ),
@@ -90,19 +90,43 @@ class _IntroNotificationsPageState extends State<IntroNotificationsPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text(
-                      'Promocje',
+                      'Promocje Męskie',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 14,
                       ),
                     ),
                     Switch.adaptive(
-                        value: saleIsSwitched,
-                        onChanged: (bool value) {
-                          setState(() {
-                            saleIsSwitched = value;
-                          });
-                        }),
+                      value: notificationSettings.manSaleIsSwitched,
+                      onChanged: (bool value) {
+                        notificationSettings.toggleManSale(value);
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              Divider(
+                thickness: 0.5,
+                color: Colors.grey[600],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      'Promocje Damskie',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                      ),
+                    ),
+                    Switch.adaptive(
+                      value: notificationSettings.womanSaleIsSwitched,
+                      onChanged: (bool value) {
+                        notificationSettings.toggleWomanSale(value);
+                      },
+                    ),
                   ],
                 ),
               ),
@@ -123,12 +147,11 @@ class _IntroNotificationsPageState extends State<IntroNotificationsPage> {
                       ),
                     ),
                     Switch.adaptive(
-                        value: otherIsSwitched,
-                        onChanged: (bool value) {
-                          setState(() {
-                            otherIsSwitched = value;
-                          });
-                        }),
+                      value: notificationSettings.otherIsSwitched,
+                      onChanged: (bool value) {
+                        notificationSettings.toggleOther(value);
+                      },
+                    ),
                   ],
                 ),
               ),
