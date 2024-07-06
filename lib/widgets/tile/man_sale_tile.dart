@@ -1,10 +1,10 @@
-import 'package:drop_check/app/home/pages/detail%20pages/accessible_shoe_detail_page.dart';
-import 'package:drop_check/models/accessible_shoe_drop_model.dart';
+import 'package:drop_check/app/home/pages/detail%20pages/man_sale_detail_page.dart';
+import 'package:drop_check/models/man_sale_model.dart';
 import 'package:flutter/material.dart';
 
-class AccessibleShoeDropTile extends StatelessWidget {
-  const AccessibleShoeDropTile({super.key, required this.accessibleShoe});
-  final AccessibleShoeDropModel accessibleShoe;
+class ManSaleTile extends StatelessWidget {
+  const ManSaleTile({super.key, required this.manSale});
+  final ManSaleModel manSale;
 
   @override
   Widget build(BuildContext context) {
@@ -13,8 +13,9 @@ class AccessibleShoeDropTile extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) =>
-                AccessibleShoeDetailPage(accessibleShoe: accessibleShoe),
+            builder: (context) => ManSaleDetailPage(
+              manSale: manSale,
+            ),
           ),
         );
       },
@@ -32,7 +33,7 @@ class AccessibleShoeDropTile extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12),
                   child: Image.network(
-                    accessibleShoe.imagePath,
+                    manSale.imagePath,
                   ),
                 ),
               ),
@@ -44,11 +45,11 @@ class AccessibleShoeDropTile extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        color: Colors.deepPurple,
+                        color: Colors.red,
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Text(
-                        accessibleShoe.dropTime,
+                        '${manSale.discountPercent}%',
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 12,
@@ -58,17 +59,28 @@ class AccessibleShoeDropTile extends StatelessWidget {
                     ),
                     const SizedBox(height: 5),
                     Text(
-                      accessibleShoe.name,
+                      manSale.name,
                       style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                       ),
-                      maxLines: 2, // Ogranicz tekst do 2 linii
-                      overflow: TextOverflow
-                          .ellipsis, // Dodaj elipsę, jeśli tekst jest za długi
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
                     const SizedBox(height: 5),
-                    Text('${accessibleShoe.price}zł'),
+                    Row(
+                      children: [
+                        Text('${manSale.price}zł'),
+                        const SizedBox(width: 10),
+                        Text(
+                          '${manSale.priceBefore}zł',
+                          style: const TextStyle(
+                            decoration: TextDecoration.lineThrough,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),

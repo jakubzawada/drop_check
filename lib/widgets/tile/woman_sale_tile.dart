@@ -1,10 +1,10 @@
-import 'package:drop_check/app/home/pages/detail%20pages/man_sale_detail_page.dart';
-import 'package:drop_check/models/man_sale_model.dart';
+import 'package:drop_check/app/home/pages/detail%20pages/woman_sale_detail_page.dart';
+import 'package:drop_check/models/woman_sale_model.dart';
 import 'package:flutter/material.dart';
 
-class ManSaleTile extends StatelessWidget {
-  const ManSaleTile({super.key, required this.manSale});
-  final ManSaleModel manSale;
+class WomanSaleTile extends StatelessWidget {
+  const WomanSaleTile({super.key, required this.womanSale});
+  final WomanSaleModel womanSale;
 
   @override
   Widget build(BuildContext context) {
@@ -13,8 +13,8 @@ class ManSaleTile extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ManSaleDetailPage(
-              manSale: manSale,
+            builder: (context) => WomanSaleDetailPage(
+              womanSale: womanSale,
             ),
           ),
         );
@@ -33,7 +33,7 @@ class ManSaleTile extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12),
                   child: Image.network(
-                    manSale.imagePath,
+                    womanSale.imagePath,
                   ),
                 ),
               ),
@@ -49,7 +49,7 @@ class ManSaleTile extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Text(
-                        '${manSale.discountPercent}%',
+                        '${womanSale.discountPercent}%',
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 12,
@@ -59,22 +59,21 @@ class ManSaleTile extends StatelessWidget {
                     ),
                     const SizedBox(height: 5),
                     Text(
-                      manSale.name,
+                      womanSale.name,
                       style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                       ),
-                      maxLines: 2, // Ogranicz tekst do 2 linii
-                      overflow: TextOverflow
-                          .ellipsis, // Dodaj elipsę, jeśli tekst jest za długi
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
                     const SizedBox(height: 5),
                     Row(
                       children: [
-                        Text('${manSale.price}zł'),
+                        Text('${womanSale.price}zł'),
                         const SizedBox(width: 10),
                         Text(
-                          '${manSale.priceBefore}zł',
+                          '${womanSale.priceBefore}zł',
                           style: const TextStyle(
                             decoration: TextDecoration.lineThrough,
                             color: Colors.grey,

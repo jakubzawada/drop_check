@@ -21,6 +21,7 @@ class NewsfeedCart extends ChangeNotifier {
       }).toList();
       notifyListeners();
     } catch (e) {
+      // ignore: avoid_print
       print('Error fetching shoes: $e');
     }
   }

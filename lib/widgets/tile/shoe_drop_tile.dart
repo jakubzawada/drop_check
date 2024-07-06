@@ -1,10 +1,10 @@
-import 'package:drop_check/app/home/pages/detail%20pages/woman_sale_detail_page.dart';
-import 'package:drop_check/models/woman_sale_model.dart';
+import 'package:drop_check/app/home/pages/detail%20pages/shoe_detail_page.dart';
+import 'package:drop_check/models/shoe_drop_model.dart';
 import 'package:flutter/material.dart';
 
-class WomanSaleTile extends StatelessWidget {
-  const WomanSaleTile({super.key, required this.womanSale});
-  final WomanSaleModel womanSale;
+class ShoeDropTile extends StatelessWidget {
+  const ShoeDropTile({super.key, required this.shoe});
+  final ShoeDropModel shoe;
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +13,7 @@ class WomanSaleTile extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => WomanSaleDetailPage(
-              womanSale: womanSale,
-            ),
+            builder: (context) => ShoeDetailPage(shoe: shoe),
           ),
         );
       },
@@ -33,7 +31,7 @@ class WomanSaleTile extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12),
                   child: Image.network(
-                    womanSale.imagePath,
+                    shoe.imagePath,
                   ),
                 ),
               ),
@@ -45,11 +43,11 @@ class WomanSaleTile extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        color: Colors.red,
+                        color: Colors.deepPurple,
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Text(
-                        '${womanSale.discountPercent}%',
+                        shoe.dropTime,
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 12,
@@ -59,29 +57,16 @@ class WomanSaleTile extends StatelessWidget {
                     ),
                     const SizedBox(height: 5),
                     Text(
-                      womanSale.name,
+                      shoe.name,
                       style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                       ),
-                      maxLines: 2, // Ogranicz tekst do 2 linii
-                      overflow: TextOverflow
-                          .ellipsis, // Dodaj elipsę, jeśli tekst jest za długi
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
                     const SizedBox(height: 5),
-                    Row(
-                      children: [
-                        Text('${womanSale.price}zł'),
-                        const SizedBox(width: 10),
-                        Text(
-                          '${womanSale.priceBefore}zł',
-                          style: const TextStyle(
-                            decoration: TextDecoration.lineThrough,
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ],
-                    ),
+                    Text('${shoe.price}zł'),
                   ],
                 ),
               ),

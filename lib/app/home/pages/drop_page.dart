@@ -1,11 +1,7 @@
-import 'package:drop_check/models/accessible_shoe_cart_model.dart';
-import 'package:drop_check/models/accessible_shoe_drop_model.dart';
-import 'package:drop_check/models/shoe_cart_model.dart';
-import 'package:drop_check/models/shoe_drop_model.dart';
-import 'package:drop_check/widgets/accessible_shoe_drop_tile.dart';
-import 'package:drop_check/widgets/shoe_drop_tile.dart';
+import 'package:drop_check/widgets/header_text.dart';
+import 'package:drop_check/widgets/drop_toggle_button.dart';
+import 'package:drop_check/widgets/shoe_list.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class DropPage extends StatefulWidget {
   const DropPage({super.key});
@@ -23,109 +19,35 @@ class _DropPageState extends State<DropPage> {
       backgroundColor: Colors.grey[300],
       body: Column(
         children: [
-          const Padding(
-            padding: EdgeInsets.only(left: 30.0, bottom: 5.0),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Dropy',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 26,
-                  ),
-                ),
-              ],
-            ),
+          const HeaderText(
+            text: 'Dropy',
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              GestureDetector(
+              DropToggleButton(
+                text: 'Nadchodzące',
+                isSelected: !showAccessible,
                 onTap: () {
                   setState(() {
                     showAccessible = false;
                   });
                 },
-                child: Container(
-                  width: 160,
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color:
-                        showAccessible ? Colors.grey[100] : Colors.deepPurple,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Text(
-                    'Nadchodzące',
-                    style: TextStyle(
-                      color: showAccessible ? Colors.grey[800] : Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
               ),
               const SizedBox(width: 20),
-              GestureDetector(
+              DropToggleButton(
+                text: 'Dostępne',
+                isSelected: showAccessible,
                 onTap: () {
                   setState(() {
                     showAccessible = true;
                   });
                 },
-                child: Container(
-                  width: 160,
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color:
-                        showAccessible ? Colors.deepPurple : Colors.grey[100],
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Text(
-                    'Dostępne',
-                    style: TextStyle(
-                      color: showAccessible ? Colors.white : Colors.grey[800],
-                      fontWeight: FontWeight.bold,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
               ),
             ],
           ),
           const SizedBox(height: 20),
-          Expanded(
-            child: showAccessible
-                ? Consumer<AccessibleShoeCart>(
-                    builder: (context, accessibleCart, child) {
-                      return ListView.builder(
-                        itemCount:
-                            accessibleCart.getAccessibleShoeList().length,
-                        scrollDirection: Axis.vertical,
-                        itemBuilder: (context, index) {
-                          AccessibleShoeDropModel accessibleShoe =
-                              accessibleCart.getAccessibleShoeList()[index];
-                          return AccessibleShoeDropTile(
-                            accessibleShoe: accessibleShoe,
-                          );
-                        },
-                      );
-                    },
-                  )
-                : Consumer<ShoeCart>(
-                    builder: (context, cart, child) {
-                      return ListView.builder(
-                        itemCount: cart.getShoeList().length,
-                        scrollDirection: Axis.vertical,
-                        itemBuilder: (context, index) {
-                          ShoeDropModel shoe = cart.getShoeList()[index];
-                          return ShoeDropTile(
-                            shoe: shoe,
-                          );
-                        },
-                      );
-                    },
-                  ),
-          ),
+          ShoeList(showAccessible: showAccessible),
         ],
       ),
     );

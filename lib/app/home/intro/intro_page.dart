@@ -1,4 +1,5 @@
 import 'package:drop_check/app/home/intro/intro_notifications_page.dart';
+import 'package:drop_check/widgets/next_button_container.dart';
 import 'package:flutter/material.dart';
 
 class IntroPage extends StatelessWidget {
@@ -49,26 +50,11 @@ class IntroPage extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 5),
-              GestureDetector(
+              NextButtonContainer(
                 onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const IntroNotificationsPage())),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey[900],
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  padding: const EdgeInsets.all(25),
-                  child: const Center(
-                    child: Text(
-                      'Dalej',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                      ),
-                    ),
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const IntroNotificationsPage(),
                   ),
                 ),
               ),

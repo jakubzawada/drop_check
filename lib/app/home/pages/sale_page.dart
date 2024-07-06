@@ -1,15 +1,7 @@
-import 'package:drop_check/app/core/enums.dart';
-import 'package:drop_check/models/man_sale_cart_model.dart';
-import 'package:drop_check/models/man_sale_model.dart';
-import 'package:drop_check/models/other_sale_cart_model.dart';
-import 'package:drop_check/models/other_sale_model.dart';
-import 'package:drop_check/models/woman_sale_cart_model.dart';
-import 'package:drop_check/models/woman_sale_model.dart';
-import 'package:drop_check/widgets/man_sale_tile.dart';
-import 'package:drop_check/widgets/other_sale_tile.dart';
-import 'package:drop_check/widgets/woman_sale_tile.dart';
+import 'package:drop_check/widgets/sale_toogle_button.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:drop_check/widgets/sale_list.dart';
+import 'package:drop_check/app/core/enums.dart';
 
 class SalePage extends StatefulWidget {
   const SalePage({super.key});
@@ -19,7 +11,6 @@ class SalePage extends StatefulWidget {
 }
 
 class _SalePageState extends State<SalePage> {
-  bool showWomanSale = false;
   SaleCategory selectedCategory = SaleCategory.men;
 
   @override
@@ -46,147 +37,43 @@ class _SalePageState extends State<SalePage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              GestureDetector(
+              SaleToggleButton(
+                text: 'Mężczyzna',
+                isSelected: selectedCategory == SaleCategory.men,
                 onTap: () {
                   setState(() {
                     selectedCategory = SaleCategory.men;
                   });
                 },
-                child: Container(
-                  width: 110,
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: selectedCategory == SaleCategory.men
-                        ? Colors.deepPurple
-                        : Colors.grey[100],
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Text(
-                    'Mężczyzna',
-                    style: TextStyle(
-                      color: selectedCategory == SaleCategory.men
-                          ? Colors.white
-                          : Colors.grey[800],
-                      fontWeight: FontWeight.bold,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
               ),
               const SizedBox(width: 20),
-              GestureDetector(
+              SaleToggleButton(
+                text: 'Kobieta',
+                isSelected: selectedCategory == SaleCategory.women,
                 onTap: () {
                   setState(() {
                     selectedCategory = SaleCategory.women;
                   });
                 },
-                child: Container(
-                  width: 110,
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: selectedCategory == SaleCategory.women
-                        ? Colors.deepPurple
-                        : Colors.grey[100],
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Text(
-                    'Kobieta',
-                    style: TextStyle(
-                      color: selectedCategory == SaleCategory.women
-                          ? Colors.white
-                          : Colors.grey[800],
-                      fontWeight: FontWeight.bold,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
               ),
               const SizedBox(width: 20),
-              GestureDetector(
+              SaleToggleButton(
+                text: 'Inne',
+                isSelected: selectedCategory == SaleCategory.other,
                 onTap: () {
                   setState(() {
                     selectedCategory = SaleCategory.other;
                   });
                 },
-                child: Container(
-                  width: 110,
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: selectedCategory == SaleCategory.other
-                        ? Colors.deepPurple
-                        : Colors.grey[100],
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Text(
-                    'Inne',
-                    style: TextStyle(
-                      color: selectedCategory == SaleCategory.other
-                          ? Colors.white
-                          : Colors.grey[800],
-                      fontWeight: FontWeight.bold,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
               ),
             ],
           ),
           const SizedBox(height: 20),
           Expanded(
-            child: _buildSaleContent(),
+            child: SaleList(selectedCategory: selectedCategory),
           ),
         ],
       ),
     );
-  }
-
-  Widget _buildSaleContent() {
-    switch (selectedCategory) {
-      case SaleCategory.men:
-        return Consumer<ManSaleCart>(
-          builder: (context, manCart, child) {
-            return ListView.builder(
-              itemCount: manCart.getManSaleList().length,
-              scrollDirection: Axis.vertical,
-              itemBuilder: (context, index) {
-                ManSaleModel manSale = manCart.getManSaleList()[index];
-                return ManSaleTile(
-                  manSale: manSale,
-                );
-              },
-            );
-          },
-        );
-      case SaleCategory.women:
-        return Consumer<WomanSaleCart>(
-          builder: (context, womanCart, child) {
-            return ListView.builder(
-              itemCount: womanCart.getWomanSaleList().length,
-              scrollDirection: Axis.vertical,
-              itemBuilder: (context, index) {
-                WomanSaleModel womanSale = womanCart.getWomanSaleList()[index];
-                return WomanSaleTile(
-                  womanSale: womanSale,
-                );
-              },
-            );
-          },
-        );
-      case SaleCategory.other:
-        return Consumer<OtherSaleCart>(
-          builder: (context, otherCart, child) {
-            return ListView.builder(
-              itemCount: otherCart.getOtherSaleList().length,
-              scrollDirection: Axis.vertical,
-              itemBuilder: (context, index) {
-                OtherSaleModel otherSale = otherCart.getOtherSaleList()[index];
-                return OtherSaleTile(
-                  otherSale: otherSale,
-                );
-              },
-            );
-          },
-        );
-    }
   }
 }

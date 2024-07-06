@@ -1,20 +1,14 @@
 import 'package:drop_check/app/home/home_page.dart';
-import 'package:drop_check/widgets/notification_settings.dart';
+import 'package:drop_check/widgets/next_button_container.dart';
+import 'package:drop_check/widgets/notification_container.dart';
+import 'package:drop_check/widgets/notification_group.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-class IntroNotificationsPage extends StatefulWidget {
+class IntroNotificationsPage extends StatelessWidget {
   const IntroNotificationsPage({super.key});
 
   @override
-  State<IntroNotificationsPage> createState() => _IntroNotificationsPageState();
-}
-
-class _IntroNotificationsPageState extends State<IntroNotificationsPage> {
-  @override
   Widget build(BuildContext context) {
-    var notificationSettings = Provider.of<NotificationSettings>(context);
-
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
@@ -55,110 +49,7 @@ class _IntroNotificationsPageState extends State<IntroNotificationsPage> {
                 ),
                 textAlign: TextAlign.center,
               ),
-              Divider(
-                thickness: 0.5,
-                color: Colors.grey[600],
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text(
-                      'Dropy',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14,
-                      ),
-                    ),
-                    Switch.adaptive(
-                      value: notificationSettings.dropIsSwitched,
-                      onChanged: (bool value) {
-                        notificationSettings.toggleDrop(value);
-                      },
-                    ),
-                  ],
-                ),
-              ),
-              Divider(
-                thickness: 0.5,
-                color: Colors.grey[600],
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text(
-                      'Promocje Męskie',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14,
-                      ),
-                    ),
-                    Switch.adaptive(
-                      value: notificationSettings.manSaleIsSwitched,
-                      onChanged: (bool value) {
-                        notificationSettings.toggleManSale(value);
-                      },
-                    ),
-                  ],
-                ),
-              ),
-              Divider(
-                thickness: 0.5,
-                color: Colors.grey[600],
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text(
-                      'Promocje Damskie',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14,
-                      ),
-                    ),
-                    Switch.adaptive(
-                      value: notificationSettings.womanSaleIsSwitched,
-                      onChanged: (bool value) {
-                        notificationSettings.toggleWomanSale(value);
-                      },
-                    ),
-                  ],
-                ),
-              ),
-              Divider(
-                thickness: 0.5,
-                color: Colors.grey[600],
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text(
-                      'Inne',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14,
-                      ),
-                    ),
-                    Switch.adaptive(
-                      value: notificationSettings.otherIsSwitched,
-                      onChanged: (bool value) {
-                        notificationSettings.toggleOther(value);
-                      },
-                    ),
-                  ],
-                ),
-              ),
-              Divider(
-                thickness: 0.5,
-                color: Colors.grey[600],
-              ),
+              const NotificationGroup(),
               const SizedBox(height: 40),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -174,114 +65,16 @@ class _IntroNotificationsPageState extends State<IntroNotificationsPage> {
                 ],
               ),
               const SizedBox(height: 5),
-              GestureDetector(
+              NextButtonContainer(
                 onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => const HomePage(),
                   ),
                 ),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey[900],
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  padding: const EdgeInsets.all(25),
-                  child: const Center(
-                    child: Text(
-                      'Dalej',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                      ),
-                    ),
-                  ),
-                ),
               ),
             ],
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class NotificationContainer extends StatelessWidget {
-  final String dropImage;
-  final String dropTime;
-  final String dropName;
-  final String dropDescription;
-  const NotificationContainer({
-    required this.dropImage,
-    required this.dropTime,
-    required this.dropName,
-    required this.dropDescription,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.grey[400],
-        borderRadius: BorderRadius.circular(12),
-      ),
-      padding: const EdgeInsets.all(10),
-      child: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: Image.asset(
-                'lib/images/Drop3.png',
-                height: 50,
-                width: 50,
-                fit: BoxFit.cover,
-              ),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  dropName,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 12,
-                  ),
-                ),
-                Text(
-                  dropDescription,
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.grey[600],
-                  ),
-                ),
-              ],
-            ),
-            Column(
-              children: [
-                Text(
-                  dropTime,
-                  style: TextStyle(
-                    color: Colors.grey[800],
-                    fontSize: 11,
-                  ),
-                ),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: Image.asset(
-                    dropImage,
-                    height: 40,
-                    width: 40,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ],
-            ),
-          ],
         ),
       ),
     );

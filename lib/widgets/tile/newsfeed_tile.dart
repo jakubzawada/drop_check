@@ -22,9 +22,8 @@ class NewsfeedTile extends StatelessWidget {
         launchURL(newsfeed.dropLink);
       },
       child: Container(
-        width: screenWidth - 30, // Szerokość ekranu minus padding (2 * 15)
-        margin: const EdgeInsets.symmetric(
-            horizontal: 15, vertical: 10), // Padding 15 pikseli po bokach
+        width: screenWidth - 30,
+        margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         decoration: BoxDecoration(
           color: Colors.grey[100],
           borderRadius: BorderRadius.circular(12),
@@ -32,10 +31,10 @@ class NewsfeedTile extends StatelessWidget {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(12),
           child: AspectRatio(
-            aspectRatio: 16 / 9, // Możesz dostosować stosunek proporcji
+            aspectRatio: 16 / 9,
             child: Image.network(
               newsfeed.imagePath,
-              fit: BoxFit.cover, // Dopasowanie obrazka
+              fit: BoxFit.cover,
             ),
           ),
         ),

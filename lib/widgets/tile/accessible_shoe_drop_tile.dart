@@ -1,10 +1,10 @@
-import 'package:drop_check/app/home/pages/detail%20pages/other_sale_detail_page.dart';
-import 'package:drop_check/models/other_sale_model.dart';
+import 'package:drop_check/app/home/pages/detail%20pages/accessible_shoe_detail_page.dart';
+import 'package:drop_check/models/accessible_shoe_drop_model.dart';
 import 'package:flutter/material.dart';
 
-class OtherSaleTile extends StatelessWidget {
-  const OtherSaleTile({Key? key, required this.otherSale}) : super(key: key);
-  final OtherSaleModel otherSale;
+class AccessibleShoeDropTile extends StatelessWidget {
+  const AccessibleShoeDropTile({super.key, required this.accessibleShoe});
+  final AccessibleShoeDropModel accessibleShoe;
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +13,8 @@ class OtherSaleTile extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => OtherSaleDetailPage(
-              otherSale: otherSale,
-            ),
+            builder: (context) =>
+                AccessibleShoeDetailPage(accessibleShoe: accessibleShoe),
           ),
         );
       },
@@ -33,7 +32,7 @@ class OtherSaleTile extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12),
                   child: Image.network(
-                    otherSale.imagePath,
+                    accessibleShoe.imagePath,
                   ),
                 ),
               ),
@@ -45,11 +44,11 @@ class OtherSaleTile extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        color: Colors.red,
+                        color: Colors.deepPurple,
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Text(
-                        '${otherSale.discountPercent}%',
+                        accessibleShoe.dropTime,
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 12,
@@ -59,29 +58,16 @@ class OtherSaleTile extends StatelessWidget {
                     ),
                     const SizedBox(height: 5),
                     Text(
-                      otherSale.name,
+                      accessibleShoe.name,
                       style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                       ),
-                      maxLines: 2, // Ogranicz tekst do 2 linii
-                      overflow: TextOverflow
-                          .ellipsis, // Dodaj elipsę, jeśli tekst jest za długi
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
                     const SizedBox(height: 5),
-                    Row(
-                      children: [
-                        Text('${otherSale.price}zł'),
-                        const SizedBox(width: 10),
-                        Text(
-                          '${otherSale.priceBefore}zł',
-                          style: const TextStyle(
-                            decoration: TextDecoration.lineThrough,
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ],
-                    ),
+                    Text('${accessibleShoe.price}zł'),
                   ],
                 ),
               ),

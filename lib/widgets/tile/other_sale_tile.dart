@@ -1,10 +1,10 @@
-import 'package:drop_check/app/home/pages/detail%20pages/shoe_detail_page.dart';
-import 'package:drop_check/models/shoe_drop_model.dart';
+import 'package:drop_check/app/home/pages/detail%20pages/other_sale_detail_page.dart';
+import 'package:drop_check/models/other_sale_model.dart';
 import 'package:flutter/material.dart';
 
-class ShoeDropTile extends StatelessWidget {
-  const ShoeDropTile({super.key, required this.shoe});
-  final ShoeDropModel shoe;
+class OtherSaleTile extends StatelessWidget {
+  const OtherSaleTile({Key? key, required this.otherSale}) : super(key: key);
+  final OtherSaleModel otherSale;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,9 @@ class ShoeDropTile extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ShoeDetailPage(shoe: shoe),
+            builder: (context) => OtherSaleDetailPage(
+              otherSale: otherSale,
+            ),
           ),
         );
       },
@@ -31,7 +33,7 @@ class ShoeDropTile extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12),
                   child: Image.network(
-                    shoe.imagePath,
+                    otherSale.imagePath,
                   ),
                 ),
               ),
@@ -43,11 +45,11 @@ class ShoeDropTile extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        color: Colors.deepPurple,
+                        color: Colors.red,
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Text(
-                        shoe.dropTime,
+                        '${otherSale.discountPercent}%',
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 12,
@@ -57,17 +59,28 @@ class ShoeDropTile extends StatelessWidget {
                     ),
                     const SizedBox(height: 5),
                     Text(
-                      shoe.name,
+                      otherSale.name,
                       style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                       ),
-                      maxLines: 2, // Ogranicz tekst do 2 linii
-                      overflow: TextOverflow
-                          .ellipsis, // Dodaj elipsę, jeśli tekst jest za długi
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
                     const SizedBox(height: 5),
-                    Text('${shoe.price}zł'),
+                    Row(
+                      children: [
+                        Text('${otherSale.price}zł'),
+                        const SizedBox(width: 10),
+                        Text(
+                          '${otherSale.priceBefore}zł',
+                          style: const TextStyle(
+                            decoration: TextDecoration.lineThrough,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),

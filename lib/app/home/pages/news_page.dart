@@ -1,8 +1,8 @@
 import 'package:drop_check/models/best_sale_cart_model.dart';
 import 'package:drop_check/models/best_sale_model.dart';
 import 'package:drop_check/models/newsfeed_cart_model.dart';
-import 'package:drop_check/widgets/best_sale_tile.dart';
-import 'package:drop_check/widgets/newsfeed_tile.dart';
+import 'package:drop_check/widgets/tile/best_sale_tile.dart';
+import 'package:drop_check/widgets/tile/newsfeed_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

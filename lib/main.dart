@@ -1,5 +1,4 @@
 import 'package:drop_check/api/firebase_api.dart';
-import 'package:drop_check/app/home/pages/notifications_page.dart';
 import 'package:drop_check/models/accessible_shoe_cart_model.dart';
 import 'package:drop_check/models/best_sale_cart_model.dart';
 import 'package:drop_check/models/man_sale_cart_model.dart';
@@ -33,7 +32,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      // Zmiana ChangeNotifierProvider na MultiProvider
       providers: [
         ChangeNotifierProvider(create: (_) => OtherSaleCart()),
         ChangeNotifierProvider(create: (_) => ManSaleCart()),
@@ -56,7 +54,6 @@ class MyApp extends StatelessWidget {
         routes: {
           'intro_page': (context) => const IntroPage(),
           'home_page': (context) => const HomePage(),
-          '/notification_screen': (context) => const NotificationPage(),
         },
       ),
     );
