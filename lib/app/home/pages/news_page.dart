@@ -6,14 +6,9 @@ import 'package:drop_check/widgets/tile/newsfeed_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class NewsPage extends StatefulWidget {
+class NewsPage extends StatelessWidget {
   const NewsPage({super.key});
 
-  @override
-  State<NewsPage> createState() => _NewsPageState();
-}
-
-class _NewsPageState extends State<NewsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

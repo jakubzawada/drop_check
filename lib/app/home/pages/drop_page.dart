@@ -1,54 +1,52 @@
+import 'package:drop_check/app/home/pages/cubit/drop_cubit.dart';
 import 'package:drop_check/widgets/header_text.dart';
 import 'package:drop_check/widgets/drop_toggle_button.dart';
 import 'package:drop_check/widgets/shoe_list.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class DropPage extends StatefulWidget {
+class DropPage extends StatelessWidget {
   const DropPage({super.key});
 
   @override
-  State<DropPage> createState() => _DropPageState();
-}
-
-class _DropPageState extends State<DropPage> {
-  bool showAccessible = false;
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[300],
-      body: Column(
-        children: [
-          const HeaderText(
-            text: 'Dropy',
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              DropToggleButton(
-                text: 'Nadchodzące',
-                isSelected: !showAccessible,
-                onTap: () {
-                  setState(() {
-                    showAccessible = false;
-                  });
-                },
-              ),
-              const SizedBox(width: 20),
-              DropToggleButton(
-                text: 'Dostępne',
-                isSelected: showAccessible,
-                onTap: () {
-                  setState(() {
-                    showAccessible = true;
-                  });
-                },
-              ),
-            ],
-          ),
-          const SizedBox(height: 20),
-          ShoeList(showAccessible: showAccessible),
-        ],
+    return BlocProvider(
+      create: (context) => DropCubit(),
+      child: BlocBuilder<DropCubit, DropState>(
+        builder: (context, state) {
+          return Scaffold(
+            backgroundColor: Colors.grey[300],
+            body: Column(
+              children: [
+                const HeaderText(
+                  text: 'Dropy',
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    DropToggleButton(
+                      text: 'Nadchodzące',
+                      isSelected: !state.showAccessible,
+                      onTap: () {
+                        context.read<DropCubit>().showAccessibleFalse();
+                      },
+                    ),
+                    const SizedBox(width: 20),
+                    DropToggleButton(
+                      text: 'Dostępne',
+                      isSelected: state.showAccessible,
+                      onTap: () {
+                        context.read<DropCubit>().showAccessibleTrue();
+                      },
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                ShoeList(showAccessible: state.showAccessible),
+              ],
+            ),
+          );
+        },
       ),
     );
   }
