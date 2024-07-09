@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="drop_check"
+        android:label="Dropcheck"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
