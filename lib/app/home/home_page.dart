@@ -17,7 +17,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
-  void navigateBottomBar(int index) {
+  Future<void> navigateBottomBar(int index) async {
     setState(() {
       _selectedIndex = index;
     });
