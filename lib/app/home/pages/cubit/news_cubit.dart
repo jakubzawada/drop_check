@@ -49,7 +49,7 @@ class NewsCubit extends Cubit<NewsState> {
     }
   }
 
-  Future<void> fetchNewsFeed() async {
+  Future<void> fetchNewsfeed() async {
     try {
       QuerySnapshot snapshot =
           await FirebaseFirestore.instance.collection('newsfeed').get();

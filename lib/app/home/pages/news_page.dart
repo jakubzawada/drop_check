@@ -13,7 +13,7 @@ class NewsPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => NewsCubit()
         ..fetchBestSale()
-        ..fetchNewsFeed(),
+        ..fetchNewsfeed(),
       child: Scaffold(
         backgroundColor: Colors.grey[300],
         body: SingleChildScrollView(

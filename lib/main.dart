@@ -1,8 +1,6 @@
 import 'package:drop_check/api/firebase_api.dart';
-import 'package:drop_check/models/accessible_shoe_cart_model.dart';
 import 'package:drop_check/models/man_sale_cart_model.dart';
 import 'package:drop_check/models/other_sale_cart_model.dart';
-import 'package:drop_check/models/shoe_cart_model.dart';
 import 'package:drop_check/models/woman_sale_cart_model.dart';
 import 'package:drop_check/theme/theme.dart';
 import 'package:drop_check/widgets/notification_settings.dart';
@@ -35,8 +33,6 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => OtherSaleCart()),
         ChangeNotifierProvider(create: (_) => ManSaleCart()),
         ChangeNotifierProvider(create: (_) => WomanSaleCart()),
-        ChangeNotifierProvider(create: (_) => ShoeCart()),
-        ChangeNotifierProvider(create: (_) => AccessibleShoeCart()),
         ChangeNotifierProvider(create: (_) => NotificationSettings()),
       ],
       child: Consumer<NotificationSettings>(
