@@ -20,7 +20,7 @@ class BestSaleTile extends StatelessWidget {
         );
       },
       child: Container(
-        width: 280,
+        width: 300,
         margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
         decoration: BoxDecoration(
           color: Colors.grey[100],

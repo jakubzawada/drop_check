@@ -26,13 +26,11 @@ class OtherSaleDetailPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Center(
-              child: Flexible(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: Image.network(
-                    otherSale.imagePath,
-                    height: 340,
-                  ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.network(
+                  otherSale.imagePath,
+                  height: 340,
                 ),
               ),
             ),

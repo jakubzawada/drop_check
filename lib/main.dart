@@ -1,11 +1,10 @@
 import 'package:drop_check/api/firebase_api.dart';
 import 'package:drop_check/models/accessible_shoe_cart_model.dart';
-import 'package:drop_check/models/best_sale_cart_model.dart';
 import 'package:drop_check/models/man_sale_cart_model.dart';
-import 'package:drop_check/models/newsfeed_cart_model.dart';
 import 'package:drop_check/models/other_sale_cart_model.dart';
 import 'package:drop_check/models/shoe_cart_model.dart';
 import 'package:drop_check/models/woman_sale_cart_model.dart';
+import 'package:drop_check/theme/theme.dart';
 import 'package:drop_check/widgets/notification_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -38,22 +37,24 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => WomanSaleCart()),
         ChangeNotifierProvider(create: (_) => ShoeCart()),
         ChangeNotifierProvider(create: (_) => AccessibleShoeCart()),
-        ChangeNotifierProvider(create: (_) => BestSaleCart()),
-        ChangeNotifierProvider(create: (_) => NewsfeedCart()),
         ChangeNotifierProvider(create: (_) => NotificationSettings()),
       ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
-        home: const InitialScreen(),
-        navigatorKey: navigatorKey,
-        routes: {
-          'intro_page': (context) => const IntroPage(),
-          'home_page': (context) => const HomePage(),
+      child: Consumer<NotificationSettings>(
+        builder: (context, settings, child) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Flutter Demo',
+            theme: lightMode,
+            darkTheme: darkMode,
+            themeMode:
+                settings.darkModeIsSwitched ? ThemeMode.dark : ThemeMode.light,
+            home: const InitialScreen(),
+            navigatorKey: navigatorKey,
+            routes: {
+              'intro_page': (context) => const IntroPage(),
+              'home_page': (context) => const HomePage(),
+            },
+          );
         },
       ),
     );
