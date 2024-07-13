@@ -1,15 +1,10 @@
 import 'package:drop_check/app/core/enums.dart';
+import 'package:drop_check/app/home/pages/cubit/sale_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:drop_check/models/man_sale_cart_model.dart';
-import 'package:drop_check/models/woman_sale_cart_model.dart';
-import 'package:drop_check/models/other_sale_cart_model.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:drop_check/widgets/tile/man_sale_tile.dart';
 import 'package:drop_check/widgets/tile/woman_sale_tile.dart';
 import 'package:drop_check/widgets/tile/other_sale_tile.dart';
-import 'package:drop_check/models/man_sale_model.dart';
-import 'package:drop_check/models/woman_sale_model.dart';
-import 'package:drop_check/models/other_sale_model.dart';
 
 class SaleList extends StatelessWidget {
   final SaleCategory selectedCategory;
@@ -20,49 +15,73 @@ class SaleList extends StatelessWidget {
   Widget build(BuildContext context) {
     switch (selectedCategory) {
       case SaleCategory.men:
-        return Consumer<ManSaleCart>(
-          builder: (context, manCart, child) {
-            return ListView.builder(
-              itemCount: manCart.getManSaleList().length,
-              scrollDirection: Axis.vertical,
-              itemBuilder: (context, index) {
-                ManSaleModel manSale = manCart.getManSaleList()[index];
-                return ManSaleTile(
-                  manSale: manSale,
+        return BlocProvider(
+          create: (context) => SaleCubit()
+            ..fetchManSale()
+            ..fetchWomanSale()
+            ..fetchOtherSale(),
+          child: BlocBuilder<SaleCubit, SaleState>(
+            builder: (context, state) {
+              if (state.status == Status.loading) {
+                return const Center(child: CircularProgressIndicator());
+              } else if (state.status == Status.succes) {
+                return ListView.builder(
+                  itemCount: state.manSale.length,
+                  itemBuilder: (context, index) {
+                    return ManSaleTile(manSale: state.manSale[index]);
+                  },
                 );
-              },
-            );
-          },
+              } else if (state.status == Status.error) {
+                return Center(child: Text(state.errorMessage));
+              } else {
+                return const Center(child: Text('No data'));
+              }
+            },
+          ),
         );
       case SaleCategory.women:
-        return Consumer<WomanSaleCart>(
-          builder: (context, womanCart, child) {
-            return ListView.builder(
-              itemCount: womanCart.getWomanSaleList().length,
-              scrollDirection: Axis.vertical,
-              itemBuilder: (context, index) {
-                WomanSaleModel womanSale = womanCart.getWomanSaleList()[index];
-                return WomanSaleTile(
-                  womanSale: womanSale,
+        return BlocProvider(
+          create: (context) => SaleCubit()..fetchWomanSale(),
+          child: BlocBuilder<SaleCubit, SaleState>(
+            builder: (context, state) {
+              if (state.status == Status.loading) {
+                return const Center(child: CircularProgressIndicator());
+              } else if (state.status == Status.succes) {
+                return ListView.builder(
+                  itemCount: state.womanSale.length,
+                  itemBuilder: (context, index) {
+                    return WomanSaleTile(womanSale: state.womanSale[index]);
+                  },
                 );
-              },
-            );
-          },
+              } else if (state.status == Status.error) {
+                return Center(child: Text(state.errorMessage));
+              } else {
+                return const Center(child: Text('No data'));
+              }
+            },
+          ),
         );
       case SaleCategory.other:
-        return Consumer<OtherSaleCart>(
-          builder: (context, otherCart, child) {
-            return ListView.builder(
-              itemCount: otherCart.getOtherSaleList().length,
-              scrollDirection: Axis.vertical,
-              itemBuilder: (context, index) {
-                OtherSaleModel otherSale = otherCart.getOtherSaleList()[index];
-                return OtherSaleTile(
-                  otherSale: otherSale,
+        return BlocProvider(
+          create: (context) => SaleCubit()..fetchOtherSale(),
+          child: BlocBuilder<SaleCubit, SaleState>(
+            builder: (context, state) {
+              if (state.status == Status.loading) {
+                return const Center(child: CircularProgressIndicator());
+              } else if (state.status == Status.succes) {
+                return ListView.builder(
+                  itemCount: state.otherSale.length,
+                  itemBuilder: (context, index) {
+                    return OtherSaleTile(otherSale: state.otherSale[index]);
+                  },
                 );
-              },
-            );
-          },
+              } else if (state.status == Status.error) {
+                return Center(child: Text(state.errorMessage));
+              } else {
+                return const Center(child: Text('No data'));
+              }
+            },
+          ),
         );
       default:
         return Container();
