@@ -1,5 +1,6 @@
 import 'package:drop_check/app/core/enums.dart';
 import 'package:drop_check/app/home/pages/cubit/sale_cubit.dart';
+import 'package:drop_check/repositories/sale_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:drop_check/widgets/tile/man_sale_tile.dart';
@@ -16,7 +17,7 @@ class SaleList extends StatelessWidget {
     switch (selectedCategory) {
       case SaleCategory.men:
         return BlocProvider(
-          create: (context) => SaleCubit()
+          create: (context) => SaleCubit(SaleRepository())
             ..fetchManSale()
             ..fetchWomanSale()
             ..fetchOtherSale(),
@@ -41,7 +42,7 @@ class SaleList extends StatelessWidget {
         );
       case SaleCategory.women:
         return BlocProvider(
-          create: (context) => SaleCubit()..fetchWomanSale(),
+          create: (context) => SaleCubit(SaleRepository())..fetchWomanSale(),
           child: BlocBuilder<SaleCubit, SaleState>(
             builder: (context, state) {
               if (state.status == Status.loading) {
@@ -63,7 +64,7 @@ class SaleList extends StatelessWidget {
         );
       case SaleCategory.other:
         return BlocProvider(
-          create: (context) => SaleCubit()..fetchOtherSale(),
+          create: (context) => SaleCubit(SaleRepository())..fetchOtherSale(),
           child: BlocBuilder<SaleCubit, SaleState>(
             builder: (context, state) {
               if (state.status == Status.loading) {

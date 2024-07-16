@@ -1,4 +1,5 @@
 import 'package:drop_check/app/home/pages/cubit/sale_cubit.dart';
+import 'package:drop_check/repositories/sale_repository.dart';
 import 'package:drop_check/widgets/sale_toogle_button.dart';
 import 'package:flutter/material.dart';
 import 'package:drop_check/widgets/sale_list.dart';
@@ -11,7 +12,7 @@ class SalePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => SaleCubit(),
+      create: (context) => SaleCubit(SaleRepository()),
       child: BlocBuilder<SaleCubit, SaleState>(
         builder: (context, state) {
           return Scaffold(
