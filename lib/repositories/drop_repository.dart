@@ -1,38 +1,41 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:drop_check/models/best_sale_model.dart';
-import 'package:drop_check/models/newsfeed_model.dart';
+import 'package:drop_check/models/accessible_shoe_drop_model.dart';
+import 'package:drop_check/models/shoe_drop_model.dart';
 
-class NewsRepository {
-  Stream<List<BestSaleModel>> getBestSaleStream() {
+class DropRepository {
+  Stream<List<ShoeDropModel>> getShoeStream() {
     return FirebaseFirestore.instance
-        .collection('bestSales')
+        .collection('drops')
         .snapshots()
         .map((querySnapshot) {
       return querySnapshot.docs.map(
         (doc) {
-          return BestSaleModel(
+          return ShoeDropModel(
             name: doc['name'],
             price: doc['price'],
             imagePath: doc['imagePath'],
-            dropLink: doc['dropLink'],
-            priceBefore: doc['priceBefore'],
-            discountPercent: doc['discountPercent'],
             description: doc['description'],
+            dropTime: doc['dropTime'],
+            dropLink: doc['dropLink'],
           );
         },
       ).toList();
     });
   }
 
-  Stream<List<NewsfeedModel>> getNewsfeedStream() {
+  Stream<List<AccessibleShoeDropModel>> getAccessibleShoeStream() {
     return FirebaseFirestore.instance
-        .collection('newsfeed')
+        .collection('accessibleDrops')
         .snapshots()
         .map((querySnapshot) {
       return querySnapshot.docs.map(
         (doc) {
-          return NewsfeedModel(
+          return AccessibleShoeDropModel(
+            name: doc['name'],
+            price: doc['price'],
             imagePath: doc['imagePath'],
+            description: doc['description'],
+            dropTime: doc['dropTime'],
             dropLink: doc['dropLink'],
           );
         },

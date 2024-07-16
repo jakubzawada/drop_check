@@ -1,4 +1,5 @@
 import 'package:drop_check/app/home/pages/cubit/drop_cubit.dart';
+import 'package:drop_check/repositories/drop_repository.dart';
 import 'package:drop_check/widgets/header_text.dart';
 import 'package:drop_check/widgets/drop_toggle_button.dart';
 import 'package:drop_check/widgets/shoe_list.dart';
@@ -11,7 +12,7 @@ class DropPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => DropCubit(),
+      create: (context) => DropCubit(DropRepository()),
       child: BlocBuilder<DropCubit, DropState>(
         builder: (context, state) {
           return Scaffold(
