@@ -1,5 +1,6 @@
 import 'package:drop_check/app/core/enums.dart';
 import 'package:drop_check/app/home/pages/cubit/drop_cubit.dart';
+import 'package:drop_check/data/remote_data_sources/drop_remote_data_source.dart';
 import 'package:drop_check/repositories/drop_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,7 +15,7 @@ class ShoeList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => DropCubit(DropRepository())
+      create: (context) => DropCubit(DropRepository(DropRemoteDataSource()))
         ..fetchShoe()
         ..fetchAccessibleShoe(),
       child: Expanded(
