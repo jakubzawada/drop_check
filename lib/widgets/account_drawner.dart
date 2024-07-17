@@ -98,7 +98,7 @@ class AccountDrawner extends StatelessWidget {
               const Spacer(),
               ListTile(
                 onTap: () => Navigator.pushNamedAndRemoveUntil(
-                    context, 'intro_page', (route) => false),
+                    context, 'home_page', (route) => false),
                 leading: Icon(
                   Icons.logout,
                   color: Colors.grey[800],
