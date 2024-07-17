@@ -1,4 +1,5 @@
 import 'package:drop_check/app/home/pages/cubit/sale_cubit.dart';
+import 'package:drop_check/data/remote_data_sources/sale_remote_data_source.dart';
 import 'package:drop_check/repositories/sale_repository.dart';
 import 'package:drop_check/widgets/sale_toogle_button.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +13,7 @@ class SalePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => SaleCubit(SaleRepository()),
+      create: (context) => SaleCubit(SaleRepository(SaleRemoteDataSource())),
       child: BlocBuilder<SaleCubit, SaleState>(
         builder: (context, state) {
           return Scaffold(
