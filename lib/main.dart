@@ -1,4 +1,5 @@
 import 'package:drop_check/api/firebase_api.dart';
+import 'package:drop_check/app/incjection_container.dart';
 import 'package:drop_check/theme/theme.dart';
 import 'package:drop_check/widgets/notification_settings.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,7 @@ import 'package:drop_check/app/home/home_page.dart';
 final navigatorKey = GlobalKey<NavigatorState>();
 
 void main() async {
+  configureDependencies();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,

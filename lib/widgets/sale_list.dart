@@ -1,7 +1,6 @@
 import 'package:drop_check/app/core/enums.dart';
 import 'package:drop_check/app/home/pages/cubit/sale_cubit.dart';
-import 'package:drop_check/data/remote_data_sources/sale_remote_data_source.dart';
-import 'package:drop_check/repositories/sale_repository.dart';
+import 'package:drop_check/app/incjection_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:drop_check/widgets/tile/man_sale_tile.dart';
@@ -17,8 +16,8 @@ class SaleList extends StatelessWidget {
   Widget build(BuildContext context) {
     switch (selectedCategory) {
       case SaleCategory.men:
-        return BlocProvider(
-          create: (context) => SaleCubit(SaleRepository(SaleRemoteDataSource()))
+        return BlocProvider<SaleCubit>(
+          create: (context) => getIt()
             ..fetchManSale()
             ..fetchWomanSale()
             ..fetchOtherSale(),
@@ -42,9 +41,8 @@ class SaleList extends StatelessWidget {
           ),
         );
       case SaleCategory.women:
-        return BlocProvider(
-          create: (context) => SaleCubit(SaleRepository(SaleRemoteDataSource()))
-            ..fetchWomanSale(),
+        return BlocProvider<SaleCubit>(
+          create: (context) => getIt()..fetchWomanSale(),
           child: BlocBuilder<SaleCubit, SaleState>(
             builder: (context, state) {
               if (state.status == Status.loading) {
@@ -65,9 +63,8 @@ class SaleList extends StatelessWidget {
           ),
         );
       case SaleCategory.other:
-        return BlocProvider(
-          create: (context) => SaleCubit(SaleRepository(SaleRemoteDataSource()))
-            ..fetchOtherSale(),
+        return BlocProvider<SaleCubit>(
+          create: (context) => getIt()..fetchOtherSale(),
           child: BlocBuilder<SaleCubit, SaleState>(
             builder: (context, state) {
               if (state.status == Status.loading) {

@@ -3,7 +3,7 @@ import 'package:drop_check/models/accessible_shoe_drop_model.dart';
 import 'package:drop_check/models/shoe_drop_model.dart';
 
 class DropRepository {
-  DropRepository(this.dataSource);
+  DropRepository({required this.dataSource});
 
   final DropRemoteDataSource dataSource;
 

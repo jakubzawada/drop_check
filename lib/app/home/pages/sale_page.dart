@@ -13,7 +13,8 @@ class SalePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => SaleCubit(SaleRepository(SaleRemoteDataSource())),
+      create: (context) => SaleCubit(
+          saleRepository: SaleRepository(dataSource: SaleRemoteDataSource())),
       child: BlocBuilder<SaleCubit, SaleState>(
         builder: (context, state) {
           return Scaffold(

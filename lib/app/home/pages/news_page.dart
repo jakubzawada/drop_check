@@ -1,7 +1,6 @@
 import 'package:drop_check/app/core/enums.dart';
 import 'package:drop_check/app/home/pages/cubit/news_cubit.dart';
-import 'package:drop_check/data/remote_data_sources/news_remote_data_source.dart';
-import 'package:drop_check/repositories/news_repository.dart';
+import 'package:drop_check/app/incjection_container.dart';
 import 'package:drop_check/widgets/tile/best_sale_tile.dart';
 import 'package:drop_check/widgets/tile/newsfeed_tile.dart';
 import 'package:flutter/material.dart';
@@ -12,8 +11,8 @@ class NewsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => NewsCubit(NewsRepository(NewsRemoteDataSource()))
+    return BlocProvider<NewsCubit>(
+      create: (context) => getIt()
         ..fetchBestSale()
         ..fetchNewsfeed(),
       child: Scaffold(

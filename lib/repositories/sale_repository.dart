@@ -4,7 +4,7 @@ import 'package:drop_check/models/other_sale_model.dart';
 import 'package:drop_check/models/woman_sale_model.dart';
 
 class SaleRepository {
-  SaleRepository(this.dataSource);
+  SaleRepository({required this.dataSource});
 
   final SaleRemoteDataSource dataSource;
 

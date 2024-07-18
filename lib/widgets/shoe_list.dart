@@ -1,7 +1,6 @@
 import 'package:drop_check/app/core/enums.dart';
 import 'package:drop_check/app/home/pages/cubit/drop_cubit.dart';
-import 'package:drop_check/data/remote_data_sources/drop_remote_data_source.dart';
-import 'package:drop_check/repositories/drop_repository.dart';
+import 'package:drop_check/app/incjection_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:drop_check/widgets/tile/accessible_shoe_drop_tile.dart';
@@ -14,8 +13,8 @@ class ShoeList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => DropCubit(DropRepository(DropRemoteDataSource()))
+    return BlocProvider<DropCubit>(
+      create: (context) => getIt()
         ..fetchShoe()
         ..fetchAccessibleShoe(),
       child: Expanded(

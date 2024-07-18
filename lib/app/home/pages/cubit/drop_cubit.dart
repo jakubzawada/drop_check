@@ -11,7 +11,7 @@ part 'drop_state.dart';
 class DropCubit extends Cubit<DropState> {
   final DropRepository dropRepository;
 
-  DropCubit(this.dropRepository)
+  DropCubit({required this.dropRepository})
       : super(
           DropState(),
         );

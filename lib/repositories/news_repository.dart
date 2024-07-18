@@ -3,7 +3,7 @@ import 'package:drop_check/models/best_sale_model.dart';
 import 'package:drop_check/models/newsfeed_model.dart';
 
 class NewsRepository {
-  NewsRepository(this.dataSource);
+  NewsRepository({required this.dataSource});
 
   final NewsRemoteDataSource dataSource;
 

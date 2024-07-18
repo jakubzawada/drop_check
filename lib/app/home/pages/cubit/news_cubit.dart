@@ -13,7 +13,7 @@ part 'news_state.dart';
 class NewsCubit extends Cubit<NewsState> {
   final NewsRepository newsRepository;
 
-  NewsCubit(this.newsRepository)
+  NewsCubit({required this.newsRepository})
       : super(
           NewsState(),
         );

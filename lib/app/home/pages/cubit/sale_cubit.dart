@@ -12,7 +12,7 @@ part 'sale_state.dart';
 class SaleCubit extends Cubit<SaleState> {
   final SaleRepository saleRepository;
 
-  SaleCubit(this.saleRepository)
+  SaleCubit({required this.saleRepository})
       : super(
           SaleState(),
         );
