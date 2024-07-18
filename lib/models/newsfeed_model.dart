@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'newsfeed_model.g.dart';
+
+@JsonSerializable()
 class NewsfeedModel {
   final String imagePath;
   final String dropLink;
@@ -7,7 +12,8 @@ class NewsfeedModel {
     required this.dropLink,
   });
 
-  NewsfeedModel.fromJson(Map<String, dynamic> json)
-      : imagePath = json['imagePath'],
-        dropLink = json['dropLink'];
+  factory NewsfeedModel.fromJson(Map<String, dynamic> json) =>
+      _$NewsfeedModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$NewsfeedModelToJson(this);
 }

@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'shoe_drop_model.g.dart';
+
+@JsonSerializable()
 class ShoeDropModel {
   final String name;
   final String price;
@@ -15,11 +20,8 @@ class ShoeDropModel {
     required this.dropLink,
   });
 
-  ShoeDropModel.fromJson(Map<String, dynamic> json)
-      : name = json['name'],
-        price = json['price'],
-        imagePath = json['imagePath'],
-        description = json['description'],
-        dropTime = json['dropTime'],
-        dropLink = json['dropLink'];
+  factory ShoeDropModel.fromJson(Map<String, dynamic> json) =>
+      _$ShoeDropModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ShoeDropModelToJson(this);
 }

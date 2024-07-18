@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'other_sale_model.g.dart';
+
+@JsonSerializable()
 class OtherSaleModel {
   final String imagePath;
   final String name;
@@ -17,12 +22,8 @@ class OtherSaleModel {
     required this.description,
   });
 
-  OtherSaleModel.fromJson(Map<String, dynamic> json)
-      : imagePath = json['imagePath'],
-        name = json['name'],
-        price = json['price'],
-        priceBefore = json['priceBefore'],
-        discountPercent = json['discountPercent'],
-        dropLink = json['dropLink'],
-        description = json['description'];
+  factory OtherSaleModel.fromJson(Map<String, dynamic> json) =>
+      _$OtherSaleModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$OtherSaleModelToJson(this);
 }
