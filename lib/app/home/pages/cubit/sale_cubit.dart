@@ -18,69 +18,69 @@ class SaleCubit extends Cubit<SaleState> {
         );
 
   Future<void> fetchManSale() async {
-    saleRepository.getManSaleStream().listen(
-      (manSale) {
-        emit(
-          state.copyWith(
-            status: Status.succes,
-            manSale: manSale,
-          ),
-        );
-      },
-      onError: (error) {
-        emit(
-          state.copyWith(
-            status: Status.error,
-            errorMessage: error.toString(),
-            manSale: const [],
-          ),
-        );
-      },
-    );
+    try {
+      saleRepository.getManSaleStream().listen(
+        (manSale) {
+          emit(
+            state.copyWith(
+              status: Status.succes,
+              manSale: manSale,
+            ),
+          );
+        },
+      );
+    } catch (error) {
+      emit(
+        state.copyWith(
+          status: Status.error,
+          errorMessage: error.toString(),
+        ),
+      );
+    }
   }
 
   Future<void> fetchWomanSale() async {
-    saleRepository.getWomanSaleStream().listen(
-      (womanSale) {
-        emit(
-          state.copyWith(
-            status: Status.succes,
-            womanSale: womanSale,
-          ),
-        );
-      },
-      onError: (error) {
-        emit(
-          state.copyWith(
-            status: Status.error,
-            errorMessage: error.toString(),
-            womanSale: const [],
-          ),
-        );
-      },
-    );
+    try {
+      saleRepository.getWomanSaleStream().listen(
+        (womanSale) {
+          emit(
+            state.copyWith(
+              status: Status.succes,
+              womanSale: womanSale,
+            ),
+          );
+        },
+      );
+    } catch (error) {
+      emit(
+        state.copyWith(
+          status: Status.error,
+          errorMessage: error.toString(),
+        ),
+      );
+    }
   }
 
   Future<void> fetchOtherSale() async {
-    saleRepository.getOtherSaleStream().listen(
-      (otherSale) {
-        emit(
-          state.copyWith(
-            status: Status.succes,
-            otherSale: otherSale,
-          ),
-        );
-      },
-      onError: (error) {
-        emit(
-          state.copyWith(
-            status: Status.error,
-            errorMessage: error.toString(),
-            otherSale: const [],
-          ),
-        );
-      },
-    );
+    try {
+      saleRepository.getOtherSaleStream().listen(
+        (otherSale) {
+          emit(
+            state.copyWith(
+              status: Status.succes,
+              otherSale: otherSale,
+            ),
+          );
+        },
+      );
+    } catch (error) {
+      emit(
+        state.copyWith(
+          status: Status.error,
+          errorMessage: error.toString(),
+        ),
+      );
+    }
   }
 
   Future<void> selectedCategoryMan() async {
