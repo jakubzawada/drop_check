@@ -6,13 +6,13 @@ part of 'newsfeed_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-NewsfeedModel _$NewsfeedModelFromJson(Map<String, dynamic> json) =>
-    NewsfeedModel(
-      imagePath: json['imagePath'] as String,
-      dropLink: json['dropLink'] as String,
+_$NewsfeedModelImpl _$$NewsfeedModelImplFromJson(Map<String, dynamic> json) =>
+    _$NewsfeedModelImpl(
+      json['imagePath'] as String,
+      json['dropLink'] as String,
     );
 
-Map<String, dynamic> _$NewsfeedModelToJson(NewsfeedModel instance) =>
+Map<String, dynamic> _$$NewsfeedModelImplToJson(_$NewsfeedModelImpl instance) =>
     <String, dynamic>{
       'imagePath': instance.imagePath,
       'dropLink': instance.dropLink,

@@ -1,19 +1,15 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
+part 'newsfeed_model.freezed.dart';
 part 'newsfeed_model.g.dart';
 
-@JsonSerializable()
-class NewsfeedModel {
-  final String imagePath;
-  final String dropLink;
-
-  NewsfeedModel({
-    required this.imagePath,
-    required this.dropLink,
-  });
+@freezed
+class NewsfeedModel with _$NewsfeedModel {
+  factory NewsfeedModel(
+    String imagePath,
+    String dropLink,
+  ) = _NewsfeedModel;
 
   factory NewsfeedModel.fromJson(Map<String, dynamic> json) =>
       _$NewsfeedModelFromJson(json);
-
-  Map<String, dynamic> toJson() => _$NewsfeedModelToJson(this);
 }

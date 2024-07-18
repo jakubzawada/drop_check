@@ -6,17 +6,17 @@ part of 'shoe_drop_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ShoeDropModel _$ShoeDropModelFromJson(Map<String, dynamic> json) =>
-    ShoeDropModel(
-      name: json['name'] as String,
-      price: json['price'] as String,
-      imagePath: json['imagePath'] as String,
-      description: json['description'] as String,
-      dropTime: json['dropTime'] as String,
-      dropLink: json['dropLink'] as String,
+_$ShoeDropModelImpl _$$ShoeDropModelImplFromJson(Map<String, dynamic> json) =>
+    _$ShoeDropModelImpl(
+      json['name'] as String,
+      json['price'] as String,
+      json['imagePath'] as String,
+      json['description'] as String,
+      json['dropTime'] as String,
+      json['dropLink'] as String,
     );
 
-Map<String, dynamic> _$ShoeDropModelToJson(ShoeDropModel instance) =>
+Map<String, dynamic> _$$ShoeDropModelImplToJson(_$ShoeDropModelImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'price': instance.price,

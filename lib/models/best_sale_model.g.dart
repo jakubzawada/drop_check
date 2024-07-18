@@ -6,18 +6,18 @@ part of 'best_sale_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-BestSaleModel _$BestSaleModelFromJson(Map<String, dynamic> json) =>
-    BestSaleModel(
-      imagePath: json['imagePath'] as String,
-      name: json['name'] as String,
-      price: json['price'] as String,
-      priceBefore: json['priceBefore'] as String,
-      discountPercent: json['discountPercent'] as String,
-      dropLink: json['dropLink'] as String,
-      description: json['description'] as String,
+_$BestSaleModelImpl _$$BestSaleModelImplFromJson(Map<String, dynamic> json) =>
+    _$BestSaleModelImpl(
+      json['imagePath'] as String,
+      json['name'] as String,
+      json['price'] as String,
+      json['priceBefore'] as String,
+      json['discountPercent'] as String,
+      json['dropLink'] as String,
+      json['description'] as String,
     );
 
-Map<String, dynamic> _$BestSaleModelToJson(BestSaleModel instance) =>
+Map<String, dynamic> _$$BestSaleModelImplToJson(_$BestSaleModelImpl instance) =>
     <String, dynamic>{
       'imagePath': instance.imagePath,
       'name': instance.name,

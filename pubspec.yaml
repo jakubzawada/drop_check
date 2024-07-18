@@ -29,6 +29,7 @@ dependencies:
   meta: ^1.10.0
   flutter_launcher_icons: ^0.13.1
   json_annotation: ^4.9.0
+  freezed_annotation: ^2.4.4
 
 dev_dependencies:
   flutter_test:
@@ -38,6 +39,7 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   build_runner: ^2.4.9
   json_serializable: ^6.8.0
+  freezed: ^2.5.2
 
 flutter_icons:
   android: "launcher_icon"

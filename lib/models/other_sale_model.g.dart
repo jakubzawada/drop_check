@@ -6,18 +6,19 @@ part of 'other_sale_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-OtherSaleModel _$OtherSaleModelFromJson(Map<String, dynamic> json) =>
-    OtherSaleModel(
-      imagePath: json['imagePath'] as String,
-      name: json['name'] as String,
-      price: json['price'] as String,
-      priceBefore: json['priceBefore'] as String,
-      discountPercent: json['discountPercent'] as String,
-      dropLink: json['dropLink'] as String,
-      description: json['description'] as String,
+_$OtherSaleModelImpl _$$OtherSaleModelImplFromJson(Map<String, dynamic> json) =>
+    _$OtherSaleModelImpl(
+      json['imagePath'] as String,
+      json['name'] as String,
+      json['price'] as String,
+      json['priceBefore'] as String,
+      json['discountPercent'] as String,
+      json['dropLink'] as String,
+      json['description'] as String,
     );
 
-Map<String, dynamic> _$OtherSaleModelToJson(OtherSaleModel instance) =>
+Map<String, dynamic> _$$OtherSaleModelImplToJson(
+        _$OtherSaleModelImpl instance) =>
     <String, dynamic>{
       'imagePath': instance.imagePath,
       'name': instance.name,
