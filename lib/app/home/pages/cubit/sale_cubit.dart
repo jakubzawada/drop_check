@@ -4,8 +4,9 @@ import 'package:drop_check/models/man_sale_model.dart';
 import 'package:drop_check/models/other_sale_model.dart';
 import 'package:drop_check/models/woman_sale_model.dart';
 import 'package:drop_check/repositories/sale_repository.dart';
-import 'package:meta/meta.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
+part 'sale_cubit.freezed.dart';
 part 'sale_state.dart';
 
 class SaleCubit extends Cubit<SaleState> {
@@ -13,14 +14,7 @@ class SaleCubit extends Cubit<SaleState> {
 
   SaleCubit(this.saleRepository)
       : super(
-          const SaleState(
-            errorMessage: '',
-            status: Status.loading,
-            selectedCategory: SaleCategory.men,
-            manSale: [],
-            womanSale: [],
-            otherSale: [],
-          ),
+          SaleState(),
         );
 
   Future<void> fetchManSale() async {

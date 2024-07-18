@@ -3,8 +3,9 @@ import 'package:drop_check/app/core/enums.dart';
 import 'package:drop_check/models/accessible_shoe_drop_model.dart';
 import 'package:drop_check/models/shoe_drop_model.dart';
 import 'package:drop_check/repositories/drop_repository.dart';
-import 'package:meta/meta.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
+part 'drop_cubit.freezed.dart';
 part 'drop_state.dart';
 
 class DropCubit extends Cubit<DropState> {
@@ -12,13 +13,7 @@ class DropCubit extends Cubit<DropState> {
 
   DropCubit(this.dropRepository)
       : super(
-          const DropState(
-            errorMessage: '',
-            status: Status.loading,
-            showAccessible: false,
-            shoe: [],
-            accessibleShoe: [],
-          ),
+          DropState(),
         );
 
   Future<void> fetchShoe() async {
