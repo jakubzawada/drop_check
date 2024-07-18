@@ -1,3 +1,4 @@
+import 'package:drop_check/widgets/timestamp_serializer.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'shoe_drop_model.freezed.dart';
@@ -10,7 +11,7 @@ class ShoeDropModel with _$ShoeDropModel {
     String price,
     String imagePath,
     String description,
-    String dropTime,
+    @TimestampSerializer() DateTime dropTime,
     String dropLink,
   ) = _ShoeDropModel;
 

@@ -1,6 +1,7 @@
 import 'package:drop_check/app/home/pages/detail%20pages/shoe_detail_page.dart';
 import 'package:drop_check/models/shoe_drop_model.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class ShoeDropTile extends StatelessWidget {
   const ShoeDropTile({super.key, required this.shoe});
@@ -8,6 +9,11 @@ class ShoeDropTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String formatDropTime(DateTime dateTime) {
+      DateFormat formatter = DateFormat('dd.MM | HH:mm');
+      return formatter.format(dateTime);
+    }
+
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -55,7 +61,7 @@ class ShoeDropTile extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Text(
-                        shoe.dropTime,
+                        formatDropTime(shoe.dropTime),
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 12,

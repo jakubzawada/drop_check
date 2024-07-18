@@ -19,13 +19,14 @@ void main() {
   });
 
   group('fetchShoe', () {
+    final DateTime now = DateTime.now();
     group('success', () {
       setUp(() {
         when(() => repository.getShoeStream()).thenAnswer(
           (_) => Stream.value(
             [
-              ShoeDropModel('name', 'price', 'imagePath', 'description',
-                  'dropTime', 'dropLink'),
+              ShoeDropModel(
+                  'name', 'price', 'imagePath', 'description', now, 'dropLink'),
             ],
           ),
         );
@@ -39,8 +40,8 @@ void main() {
           DropState(
             status: Status.succes,
             shoe: [
-              ShoeDropModel('name', 'price', 'imagePath', 'description',
-                  'dropTime', 'dropLink'),
+              ShoeDropModel(
+                  'name', 'price', 'imagePath', 'description', now, 'dropLink'),
             ],
           )
         ],
@@ -67,13 +68,14 @@ void main() {
     });
   });
   group('fetchAccessibleShoe', () {
+    final DateTime now = DateTime.now();
     group('succes', () {
       setUp(() {
         when(() => repository.getAccessibleShoeStream()).thenAnswer(
           (_) => Stream.value(
             [
-              AccessibleShoeDropModel('name', 'price', 'imagePath',
-                  'description', 'dropTime', 'dropLink'),
+              AccessibleShoeDropModel(
+                  'name', 'price', 'imagePath', 'description', now, 'dropLink'),
             ],
           ),
         );
@@ -87,8 +89,8 @@ void main() {
           DropState(
             status: Status.succes,
             accessibleShoe: [
-              AccessibleShoeDropModel('name', 'price', 'imagePath',
-                  'description', 'dropTime', 'dropLink'),
+              AccessibleShoeDropModel(
+                  'name', 'price', 'imagePath', 'description', now, 'dropLink'),
             ],
           )
         ],

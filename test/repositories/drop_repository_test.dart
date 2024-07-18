@@ -31,12 +31,15 @@ void main() {
 
   group('getShoeStream', () {
     test('should return a stream of ShoeDropModel', () async {
+      final now = DateTime.now();
+      final timestamp = Timestamp.fromDate(now);
+
       final shoeDropData = {
         'name': 'name',
         'price': 'price',
         'imagePath': 'imagePath',
         'description': 'description',
-        'dropTime': 'dropTime',
+        'dropTime': timestamp,
         'dropLink': 'dropLink',
       };
 
@@ -54,12 +57,15 @@ void main() {
 
   group('getAccessibleShoeStream', () {
     test('should return a stream of AccessibleShoeDropModel', () async {
+      final now = DateTime.now();
+      final timestamp = Timestamp.fromDate(now);
+
       final accessibleShoeDropData = {
         'name': 'name',
         'price': 'price',
         'imagePath': 'imagePath',
         'description': 'description',
-        'dropTime': 'dropTime',
+        'dropTime': timestamp,
         'dropLink': 'dropLink',
       };
 

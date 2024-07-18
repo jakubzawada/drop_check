@@ -25,7 +25,8 @@ mixin _$AccessibleShoeDropModel {
   String get price => throw _privateConstructorUsedError;
   String get imagePath => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  String get dropTime => throw _privateConstructorUsedError;
+  @TimestampSerializer()
+  DateTime get dropTime => throw _privateConstructorUsedError;
   String get dropLink => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -45,7 +46,7 @@ abstract class $AccessibleShoeDropModelCopyWith<$Res> {
       String price,
       String imagePath,
       String description,
-      String dropTime,
+      @TimestampSerializer() DateTime dropTime,
       String dropLink});
 }
 
@@ -90,7 +91,7 @@ class _$AccessibleShoeDropModelCopyWithImpl<$Res,
       dropTime: null == dropTime
           ? _value.dropTime
           : dropTime // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       dropLink: null == dropLink
           ? _value.dropLink
           : dropLink // ignore: cast_nullable_to_non_nullable
@@ -113,7 +114,7 @@ abstract class _$$AccessibleShoeDropModelImplCopyWith<$Res>
       String price,
       String imagePath,
       String description,
-      String dropTime,
+      @TimestampSerializer() DateTime dropTime,
       String dropLink});
 }
 
@@ -157,7 +158,7 @@ class __$$AccessibleShoeDropModelImplCopyWithImpl<$Res>
       null == dropTime
           ? _value.dropTime
           : dropTime // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       null == dropLink
           ? _value.dropLink
           : dropLink // ignore: cast_nullable_to_non_nullable
@@ -170,7 +171,7 @@ class __$$AccessibleShoeDropModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$AccessibleShoeDropModelImpl implements _AccessibleShoeDropModel {
   _$AccessibleShoeDropModelImpl(this.name, this.price, this.imagePath,
-      this.description, this.dropTime, this.dropLink);
+      this.description, @TimestampSerializer() this.dropTime, this.dropLink);
 
   factory _$AccessibleShoeDropModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$AccessibleShoeDropModelImplFromJson(json);
@@ -184,7 +185,8 @@ class _$AccessibleShoeDropModelImpl implements _AccessibleShoeDropModel {
   @override
   final String description;
   @override
-  final String dropTime;
+  @TimestampSerializer()
+  final DateTime dropTime;
   @override
   final String dropLink;
 
@@ -236,7 +238,7 @@ abstract class _AccessibleShoeDropModel implements AccessibleShoeDropModel {
       final String price,
       final String imagePath,
       final String description,
-      final String dropTime,
+      @TimestampSerializer() final DateTime dropTime,
       final String dropLink) = _$AccessibleShoeDropModelImpl;
 
   factory _AccessibleShoeDropModel.fromJson(Map<String, dynamic> json) =
@@ -251,7 +253,8 @@ abstract class _AccessibleShoeDropModel implements AccessibleShoeDropModel {
   @override
   String get description;
   @override
-  String get dropTime;
+  @TimestampSerializer()
+  DateTime get dropTime;
   @override
   String get dropLink;
   @override

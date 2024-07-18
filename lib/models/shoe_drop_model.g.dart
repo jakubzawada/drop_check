@@ -12,7 +12,7 @@ _$ShoeDropModelImpl _$$ShoeDropModelImplFromJson(Map<String, dynamic> json) =>
       json['price'] as String,
       json['imagePath'] as String,
       json['description'] as String,
-      json['dropTime'] as String,
+      const TimestampSerializer().fromJson(json['dropTime']),
       json['dropLink'] as String,
     );
 
@@ -22,6 +22,6 @@ Map<String, dynamic> _$$ShoeDropModelImplToJson(_$ShoeDropModelImpl instance) =>
       'price': instance.price,
       'imagePath': instance.imagePath,
       'description': instance.description,
-      'dropTime': instance.dropTime,
+      'dropTime': const TimestampSerializer().toJson(instance.dropTime),
       'dropLink': instance.dropLink,
     };

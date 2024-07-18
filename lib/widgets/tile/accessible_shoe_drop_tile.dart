@@ -1,6 +1,7 @@
 import 'package:drop_check/app/home/pages/detail%20pages/accessible_shoe_detail_page.dart';
 import 'package:drop_check/models/accessible_shoe_drop_model.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class AccessibleShoeDropTile extends StatelessWidget {
   const AccessibleShoeDropTile({super.key, required this.accessibleShoe});
@@ -8,6 +9,11 @@ class AccessibleShoeDropTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String formatDropTime(DateTime dateTime) {
+      DateFormat formatter = DateFormat('dd.MM | HH:mm');
+      return formatter.format(dateTime);
+    }
+
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -56,7 +62,7 @@ class AccessibleShoeDropTile extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Text(
-                        accessibleShoe.dropTime,
+                        formatDropTime(accessibleShoe.dropTime),
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 12,
