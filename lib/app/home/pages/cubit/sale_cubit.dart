@@ -5,12 +5,10 @@ import 'package:drop_check/models/other_sale_model.dart';
 import 'package:drop_check/models/woman_sale_model.dart';
 import 'package:drop_check/repositories/sale_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:injectable/injectable.dart';
 
 part 'sale_cubit.freezed.dart';
 part 'sale_state.dart';
 
-@injectable
 class SaleCubit extends Cubit<SaleState> {
   final SaleRepository saleRepository;
 

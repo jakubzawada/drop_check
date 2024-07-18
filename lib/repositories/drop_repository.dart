@@ -1,9 +1,7 @@
 import 'package:drop_check/data/remote_data_sources/drop_remote_data_source.dart';
 import 'package:drop_check/models/accessible_shoe_drop_model.dart';
 import 'package:drop_check/models/shoe_drop_model.dart';
-import 'package:injectable/injectable.dart';
 
-@injectable
 class DropRepository {
   DropRepository({required this.dataSource});
 
