@@ -19,7 +19,7 @@ void main() {
   });
 
   group('fetchShoe', () {
-    group('succes', () {
+    group('success', () {
       setUp(() {
         when(() => repository.getShoeStream()).thenAnswer(
           (_) => Stream.value(

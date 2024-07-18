@@ -19,47 +19,46 @@ class NewsCubit extends Cubit<NewsState> {
         );
 
   Future<void> fetchBestSale() async {
-    newsRepository.getBestSaleStream().listen(
-      (bestSale) {
-        emit(
-          state.copyWith(
-            status: Status.succes,
-            bestSale: bestSale,
-          ),
-        );
-      },
-      onError: (error) {
-        emit(
-          state.copyWith(
-            status: Status.error,
-            errorMessage: error.toString(),
-            bestSale: const [],
-          ),
-        );
-      },
-    );
+    try {
+      newsRepository.getBestSaleStream().listen(
+        (bestSale) {
+          emit(
+            state.copyWith(
+              status: Status.succes,
+              bestSale: bestSale,
+            ),
+          );
+        },
+      );
+    } catch (error) {
+      emit(
+        state.copyWith(
+          status: Status.error,
+          errorMessage: error.toString(),
+        ),
+      );
+    }
   }
 
   Future<void> fetchNewsfeed() async {
-    newsRepository.getNewsfeedStream().listen(
-      (newsfeed) {
-        emit(
-          state.copyWith(
-            status: Status.succes,
-            errorMessage: '',
-            newsfeed: newsfeed,
-          ),
-        );
-      },
-      onError: (error) {
-        emit(
-          state.copyWith(
-            status: Status.error,
-            errorMessage: error.toString(),
-            newsfeed: const [],
-          ),
-        );
-      },
-    );
+    try {
+      newsRepository.getNewsfeedStream().listen(
+        (newsfeed) {
+          emit(
+            state.copyWith(
+              status: Status.succes,
+              newsfeed: newsfeed,
+            ),
+          );
+        },
+      );
+    } catch (error) {
+      emit(
+        state.copyWith(
+          status: Status.error,
+          errorMessage: error.toString(),
+        ),
+      );
+    }
   }
 }
