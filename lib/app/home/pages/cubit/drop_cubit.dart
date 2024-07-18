@@ -4,10 +4,12 @@ import 'package:drop_check/models/accessible_shoe_drop_model.dart';
 import 'package:drop_check/models/shoe_drop_model.dart';
 import 'package:drop_check/repositories/drop_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 
 part 'drop_cubit.freezed.dart';
 part 'drop_state.dart';
 
+@injectable
 class DropCubit extends Cubit<DropState> {
   final DropRepository dropRepository;
 

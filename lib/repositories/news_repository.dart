@@ -1,7 +1,9 @@
 import 'package:drop_check/data/remote_data_sources/news_remote_data_source.dart';
 import 'package:drop_check/models/best_sale_model.dart';
 import 'package:drop_check/models/newsfeed_model.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class NewsRepository {
   NewsRepository({required this.dataSource});
 

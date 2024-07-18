@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class SaleRemoteDataSource {
   Stream<QuerySnapshot<Map<String, dynamic>>> getManSaleStream() {
     return FirebaseFirestore.instance.collection('manSales').snapshots();
