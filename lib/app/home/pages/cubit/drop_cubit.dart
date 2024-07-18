@@ -17,47 +17,45 @@ class DropCubit extends Cubit<DropState> {
         );
 
   Future<void> fetchShoe() async {
-    dropRepository.getShoeStream().listen(
-      (shoe) {
+    try {
+      dropRepository.getShoeStream().listen((shoe) {
         emit(
           state.copyWith(
             status: Status.succes,
             shoe: shoe,
           ),
         );
-      },
-      onError: (error) {
-        emit(
-          state.copyWith(
-            status: Status.error,
-            errorMessage: error.toString(),
-            shoe: const [],
-          ),
-        );
-      },
-    );
+      });
+    } catch (error) {
+      emit(
+        state.copyWith(
+          status: Status.error,
+          errorMessage: error.toString(),
+        ),
+      );
+    }
   }
 
   Future<void> fetchAccessibleShoe() async {
-    dropRepository.getAccessibleShoeStream().listen(
-      (accessibleShoe) {
-        emit(
-          state.copyWith(
-            status: Status.succes,
-            accessibleShoe: accessibleShoe,
-          ),
-        );
-      },
-      onError: (error) {
-        emit(
-          state.copyWith(
-            status: Status.error,
-            errorMessage: error.toString(),
-            accessibleShoe: const [],
-          ),
-        );
-      },
-    );
+    try {
+      dropRepository.getAccessibleShoeStream().listen(
+        (accessibleShoe) {
+          emit(
+            state.copyWith(
+              status: Status.succes,
+              accessibleShoe: accessibleShoe,
+            ),
+          );
+        },
+      );
+    } catch (error) {
+      emit(
+        state.copyWith(
+          status: Status.error,
+          errorMessage: error.toString(),
+        ),
+      );
+    }
   }
 
   Future<void> showAccessibleFalse() async {

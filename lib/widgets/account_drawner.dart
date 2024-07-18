@@ -45,56 +45,6 @@ class AccountDrawner extends StatelessWidget {
               ),
               const NotificationGroup(),
               const SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(
-                    'Ogólne',
-                    style: TextStyle(
-                      color: Colors.grey[600],
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                    ),
-                  ),
-                ],
-              ),
-              Divider(
-                thickness: 0.5,
-                color: Colors.grey[600],
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Row(
-                      children: [
-                        Icon(Icons.brightness_2_outlined),
-                        Text(
-                          'Tryb Ciemny',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Transform.scale(
-                      scale: 0.85,
-                      child: Switch.adaptive(
-                        value: notificationSettings.darkModeIsSwitched,
-                        onChanged: (bool value) {
-                          notificationSettings.toggleDarkMode(value);
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Divider(
-                thickness: 0.5,
-                color: Colors.grey[600],
-              ),
               const Spacer(),
               ListTile(
                 onTap: () => Navigator.pushNamedAndRemoveUntil(
