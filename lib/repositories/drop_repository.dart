@@ -10,15 +10,8 @@ class DropRepository {
   Stream<List<ShoeDropModel>> getShoeStream() {
     return dataSource.getShoeStream().map((querySnapshot) {
       return querySnapshot.docs.map((doc) {
-        final data = doc.data();
-        return ShoeDropModel(
-          name: data['name'],
-          price: data['price'],
-          imagePath: data['imagePath'],
-          description: data['description'],
-          dropTime: data['dropTime'],
-          dropLink: data['dropLink'],
-        );
+        final json = doc.data();
+        return ShoeDropModel.fromJson(json);
       }).toList();
     });
   }
@@ -26,15 +19,8 @@ class DropRepository {
   Stream<List<AccessibleShoeDropModel>> getAccessibleShoeStream() {
     return dataSource.getAccessibleShoeStream().map((querySnapshot) {
       return querySnapshot.docs.map((doc) {
-        final data = doc.data();
-        return AccessibleShoeDropModel(
-          name: data['name'],
-          price: data['price'],
-          imagePath: data['imagePath'],
-          description: data['description'],
-          dropTime: data['dropTime'],
-          dropLink: data['dropLink'],
-        );
+        final json = doc.data();
+        return AccessibleShoeDropModel.fromJson(json);
       }).toList();
     });
   }

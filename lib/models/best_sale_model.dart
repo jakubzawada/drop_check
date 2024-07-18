@@ -16,4 +16,13 @@ class BestSaleModel {
     required this.dropLink,
     required this.description,
   });
+
+  BestSaleModel.fromJson(Map<String, dynamic> json)
+      : imagePath = json['imagePath'],
+        name = json['name'],
+        price = json['price'],
+        priceBefore = json['priceBefore'],
+        discountPercent = json['discountPercent'],
+        dropLink = json['dropLink'],
+        description = json['description'];
 }

@@ -14,4 +14,12 @@ class AccessibleShoeDropModel {
     required this.dropTime,
     required this.dropLink,
   });
+
+  AccessibleShoeDropModel.fromJson(Map<String, dynamic> json)
+      : name = json['name'],
+        price = json['price'],
+        imagePath = json['imagePath'],
+        description = json['description'],
+        dropTime = json['dropTime'],
+        dropLink = json['dropLink'];
 }

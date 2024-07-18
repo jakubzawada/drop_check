@@ -10,16 +10,8 @@ class NewsRepository {
   Stream<List<BestSaleModel>> getBestSaleStream() {
     return dataSource.getBestSalesStream().map((querySnapshot) {
       return querySnapshot.docs.map((doc) {
-        final data = doc.data();
-        return BestSaleModel(
-          name: data['name'],
-          price: data['price'],
-          imagePath: data['imagePath'],
-          dropLink: data['dropLink'],
-          priceBefore: data['priceBefore'],
-          discountPercent: data['discountPercent'],
-          description: data['description'],
-        );
+        final json = doc.data();
+        return BestSaleModel.fromJson(json);
       }).toList();
     });
   }
@@ -27,11 +19,8 @@ class NewsRepository {
   Stream<List<NewsfeedModel>> getNewsfeedStream() {
     return dataSource.getNewsfeedStream().map((querySnapshot) {
       return querySnapshot.docs.map((doc) {
-        final data = doc.data();
-        return NewsfeedModel(
-          imagePath: data['imagePath'],
-          dropLink: data['dropLink'],
-        );
+        final json = doc.data();
+        return NewsfeedModel.fromJson(json);
       }).toList();
     });
   }

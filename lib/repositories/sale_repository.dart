@@ -11,16 +11,8 @@ class SaleRepository {
   Stream<List<ManSaleModel>> getManSaleStream() {
     return dataSource.getManSaleStream().map((querySnapshot) {
       return querySnapshot.docs.map((doc) {
-        final data = doc.data();
-        return ManSaleModel(
-          name: data['name'],
-          price: data['price'],
-          imagePath: data['imagePath'],
-          dropLink: data['dropLink'],
-          priceBefore: data['priceBefore'],
-          discountPercent: data['discountPercent'],
-          description: data['description'],
-        );
+        final json = doc.data();
+        return ManSaleModel.fromJson(json);
       }).toList();
     });
   }
@@ -28,16 +20,8 @@ class SaleRepository {
   Stream<List<WomanSaleModel>> getWomanSaleStream() {
     return dataSource.getWomanSaleStream().map((querySnapshot) {
       return querySnapshot.docs.map((doc) {
-        final data = doc.data();
-        return WomanSaleModel(
-          name: data['name'],
-          price: data['price'],
-          imagePath: data['imagePath'],
-          dropLink: data['dropLink'],
-          priceBefore: data['priceBefore'],
-          discountPercent: data['discountPercent'],
-          description: data['description'],
-        );
+        final json = doc.data();
+        return WomanSaleModel.fromJson(json);
       }).toList();
     });
   }
@@ -45,16 +29,8 @@ class SaleRepository {
   Stream<List<OtherSaleModel>> getOtherSaleStream() {
     return dataSource.getOtherSaleStream().map((querySnapshot) {
       return querySnapshot.docs.map((doc) {
-        final data = doc.data();
-        return OtherSaleModel(
-          name: data['name'],
-          price: data['price'],
-          imagePath: data['imagePath'],
-          dropLink: data['dropLink'],
-          priceBefore: data['priceBefore'],
-          discountPercent: data['discountPercent'],
-          description: data['description'],
-        );
+        final json = doc.data();
+        return OtherSaleModel.fromJson(json);
       }).toList();
     });
   }

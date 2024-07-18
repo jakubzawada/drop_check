@@ -16,4 +16,13 @@ class WomanSaleModel {
     required this.dropLink,
     required this.description,
   });
+
+  WomanSaleModel.fromJson(Map<String, dynamic> json)
+      : imagePath = json['imagePath'],
+        name = json['name'],
+        price = json['price'],
+        priceBefore = json['priceBefore'],
+        discountPercent = json['discountPercent'],
+        dropLink = json['dropLink'],
+        description = json['description'];
 }
