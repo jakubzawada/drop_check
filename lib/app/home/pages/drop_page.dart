@@ -5,6 +5,7 @@ import 'package:drop_check/widgets/drop_toggle_button.dart';
 import 'package:drop_check/widgets/shoe_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DropPage extends StatelessWidget {
   const DropPage({super.key});
@@ -19,14 +20,14 @@ class DropPage extends StatelessWidget {
             backgroundColor: Colors.grey[300],
             body: Column(
               children: [
-                const HeaderText(
-                  text: 'Dropy',
+                HeaderText(
+                  text: AppLocalizations.of(context).drops,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     DropToggleButton(
-                      text: 'Nadchodzące',
+                      text: AppLocalizations.of(context).upcoming,
                       isSelected: !state.showAccessible,
                       onTap: () {
                         context.read<DropCubit>().showAccessibleFalse();
@@ -34,7 +35,7 @@ class DropPage extends StatelessWidget {
                     ),
                     const SizedBox(width: 20),
                     DropToggleButton(
-                      text: 'Dostępne',
+                      text: AppLocalizations.of(context).available,
                       isSelected: state.showAccessible,
                       onTap: () {
                         context.read<DropCubit>().showAccessibleTrue();

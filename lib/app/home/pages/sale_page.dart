@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:drop_check/widgets/sale_list.dart';
 import 'package:drop_check/app/core/enums.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SalePage extends StatelessWidget {
   const SalePage({super.key});
@@ -21,14 +22,14 @@ class SalePage extends StatelessWidget {
             backgroundColor: Colors.grey[300],
             body: Column(
               children: [
-                const Padding(
-                  padding: EdgeInsets.only(left: 15.0, bottom: 5.0),
+                Padding(
+                  padding: const EdgeInsets.only(left: 15.0, bottom: 5.0),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Promocje',
-                        style: TextStyle(
+                        AppLocalizations.of(context).promotions,
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 26,
                         ),
@@ -40,7 +41,7 @@ class SalePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SaleToggleButton(
-                      text: 'Mężczyzna',
+                      text: AppLocalizations.of(context).male,
                       isSelected: state.selectedCategory == SaleCategory.men,
                       onTap: () {
                         context.read<SaleCubit>().selectedCategoryMan();
@@ -48,7 +49,7 @@ class SalePage extends StatelessWidget {
                     ),
                     const SizedBox(width: 20),
                     SaleToggleButton(
-                      text: 'Kobieta',
+                      text: AppLocalizations.of(context).woman,
                       isSelected: state.selectedCategory == SaleCategory.women,
                       onTap: () {
                         context.read<SaleCubit>().selectedCategoryWoman();
@@ -56,7 +57,7 @@ class SalePage extends StatelessWidget {
                     ),
                     const SizedBox(width: 20),
                     SaleToggleButton(
-                      text: 'Inne',
+                      text: AppLocalizations.of(context).other,
                       isSelected: state.selectedCategory == SaleCategory.other,
                       onTap: () {
                         context.read<SaleCubit>().selectedCategoryOther();

@@ -10,6 +10,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+    
 
 
   
@@ -32,7 +35,8 @@ dependencies:
   freezed_annotation: ^2.4.4
   get_it: ^7.6.7
   injectable: ^2.3.5
-  intl: ^0.19.0
+  intl: ^0.18.1
+  
 
 dev_dependencies:
   flutter_test:
@@ -58,6 +62,7 @@ flutter:
 
 
   uses-material-design: true
+  generate: true
 
   
   assets:

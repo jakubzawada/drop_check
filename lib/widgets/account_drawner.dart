@@ -1,6 +1,7 @@
 import 'package:drop_check/widgets/notification_group.dart';
 import 'package:drop_check/widgets/notification_settings.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AccountDrawner extends StatelessWidget {
   const AccountDrawner({
@@ -34,7 +35,7 @@ class AccountDrawner extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    'Powiadomienia',
+                    AppLocalizations.of(context).notifications,
                     style: TextStyle(
                       color: Colors.grey[600],
                       fontWeight: FontWeight.bold,
@@ -54,7 +55,7 @@ class AccountDrawner extends StatelessWidget {
                   color: Colors.grey[800],
                 ),
                 title: Text(
-                  'Wyjście',
+                  AppLocalizations.of(context).leave,
                   style: TextStyle(
                     color: Colors.grey[800],
                   ),

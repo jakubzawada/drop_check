@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NextButtonContainer extends StatelessWidget {
   final VoidCallback onTap;
@@ -17,10 +18,10 @@ class NextButtonContainer extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
         ),
         padding: const EdgeInsets.all(25),
-        child: const Center(
+        child: Center(
           child: Text(
-            'Dalej',
-            style: TextStyle(
+            AppLocalizations.of(context).next,
+            style: const TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
               fontSize: 16,

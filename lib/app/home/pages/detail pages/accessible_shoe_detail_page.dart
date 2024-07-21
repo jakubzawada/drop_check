@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:drop_check/models/accessible_shoe_drop_model.dart';
+import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AccessibleShoeDetailPage extends StatelessWidget {
   final AccessibleShoeDropModel accessibleShoe;
@@ -12,6 +14,11 @@ class AccessibleShoeDetailPage extends StatelessWidget {
     if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
       throw 'Could not launch $url';
     }
+  }
+
+  String formatDropTime(DateTime dateTime) {
+    DateFormat formatter = DateFormat('dd.MM | HH:mm');
+    return formatter.format(dateTime);
   }
 
   @override
@@ -60,7 +67,7 @@ class AccessibleShoeDetailPage extends StatelessWidget {
             ),
             const SizedBox(height: 16.0),
             Text(
-              'Drop Time: ${accessibleShoe.dropTime}',
+              'DropTime: ${formatDropTime(accessibleShoe.dropTime)}',
               style: TextStyle(
                 fontSize: 16.0,
                 color: Colors.grey[600],
@@ -81,9 +88,9 @@ class AccessibleShoeDetailPage extends StatelessWidget {
                       color: Colors.deepPurple,
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: const Text(
-                      'Kup teraz',
-                      style: TextStyle(
+                    child: Text(
+                      AppLocalizations.of(context).buyNow,
+                      style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                       ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:drop_check/widgets/notification_settings.dart';
 import 'package:drop_check/widgets/notification_switch.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NotificationGroup extends StatelessWidget {
   const NotificationGroup({super.key});
@@ -14,7 +15,7 @@ class NotificationGroup extends StatelessWidget {
       children: [
         Divider(thickness: 0.5, color: Colors.grey[600]),
         NotificationSwitch(
-          title: 'Dropy',
+          title: AppLocalizations.of(context).drops,
           value: notificationSettings.dropIsSwitched,
           onChanged: (bool value) {
             notificationSettings.toggleDrop(value);
@@ -22,7 +23,7 @@ class NotificationGroup extends StatelessWidget {
         ),
         Divider(thickness: 0.5, color: Colors.grey[600]),
         NotificationSwitch(
-          title: 'Promocje Męskie',
+          title: AppLocalizations.of(context).mensPromotions,
           value: notificationSettings.manSaleIsSwitched,
           onChanged: (bool value) {
             notificationSettings.toggleManSale(value);
@@ -30,7 +31,7 @@ class NotificationGroup extends StatelessWidget {
         ),
         Divider(thickness: 0.5, color: Colors.grey[600]),
         NotificationSwitch(
-          title: 'Promocje Damskie',
+          title: AppLocalizations.of(context).womenPromotions,
           value: notificationSettings.womanSaleIsSwitched,
           onChanged: (bool value) {
             notificationSettings.toggleWomanSale(value);
@@ -38,7 +39,7 @@ class NotificationGroup extends StatelessWidget {
         ),
         Divider(thickness: 0.5, color: Colors.grey[600]),
         NotificationSwitch(
-          title: 'Inne',
+          title: AppLocalizations.of(context).otherPromotions,
           value: notificationSettings.otherIsSwitched,
           onChanged: (bool value) {
             notificationSettings.toggleOther(value);

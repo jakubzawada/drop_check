@@ -9,6 +9,8 @@ import 'firebase_options.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:drop_check/app/home/intro/intro_page.dart';
 import 'package:drop_check/app/home/home_page.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 
@@ -40,6 +42,17 @@ class MyApp extends StatelessWidget {
             darkTheme: darkMode,
             themeMode:
                 settings.darkModeIsSwitched ? ThemeMode.dark : ThemeMode.light,
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: const [
+              Locale('en'),
+              Locale('pl'),
+              Locale('es'),
+            ],
             home: const InitialScreen(),
             navigatorKey: navigatorKey,
             routes: {

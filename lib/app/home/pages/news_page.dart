@@ -5,6 +5,7 @@ import 'package:drop_check/widgets/tile/best_sale_tile.dart';
 import 'package:drop_check/widgets/tile/newsfeed_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NewsPage extends StatelessWidget {
   const NewsPage({super.key});
@@ -21,14 +22,14 @@ class NewsPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Padding(
-                padding: EdgeInsets.only(left: 20.0, bottom: 5.0),
+              Padding(
+                padding: const EdgeInsets.only(left: 20.0, bottom: 5.0),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Okazje',
-                      style: TextStyle(
+                      AppLocalizations.of(context).bargains,
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 26,
                       ),
@@ -63,14 +64,14 @@ class NewsPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              const Padding(
-                padding: EdgeInsets.only(left: 20.0),
+              Padding(
+                padding: const EdgeInsets.only(left: 20.0),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Aktualności',
-                      style: TextStyle(
+                      AppLocalizations.of(context).newsfeed,
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 26,
                       ),

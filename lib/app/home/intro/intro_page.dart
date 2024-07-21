@@ -1,6 +1,7 @@
 import 'package:drop_check/app/home/intro/intro_notifications_page.dart';
 import 'package:drop_check/widgets/next_button_container.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class IntroPage extends StatelessWidget {
   const IntroPage({super.key});
@@ -19,17 +20,17 @@ class IntroPage extends StatelessWidget {
                 'lib/images/DCLogo3.png',
                 height: 240,
               ),
-              const Text(
-                'Dropy i promocje!',
-                style: TextStyle(
+              Text(
+                AppLocalizations.of(context).dropsAndPromotions,
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
                 ),
               ),
               const SizedBox(height: 24),
-              const Text(
-                'Odkryj najnowsze dropy sneakersów i korzystaj z największych promocji na lifestyle i streetwear!',
-                style: TextStyle(
+              Text(
+                AppLocalizations.of(context).discoverTheLatestSneakerDrops,
+                style: const TextStyle(
                   fontSize: 16,
                   color: Colors.grey,
                 ),

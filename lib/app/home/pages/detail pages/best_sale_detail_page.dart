@@ -1,6 +1,7 @@
 import 'package:drop_check/models/best_sale_model.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BestSaleDetailPage extends StatelessWidget {
   final BestSaleModel bestSale;
@@ -104,9 +105,9 @@ class BestSaleDetailPage extends StatelessWidget {
                       color: Colors.deepPurple,
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: const Text(
-                      'Kup teraz',
-                      style: TextStyle(
+                    child: Text(
+                      AppLocalizations.of(context).buyNow,
+                      style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                       ),

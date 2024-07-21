@@ -3,6 +3,7 @@ import 'package:drop_check/widgets/next_button_container.dart';
 import 'package:drop_check/widgets/notification_container.dart';
 import 'package:drop_check/widgets/notification_group.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class IntroNotificationsPage extends StatelessWidget {
   const IntroNotificationsPage({super.key});
@@ -19,31 +20,33 @@ class IntroNotificationsPage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 25.0),
           child: Column(
             children: [
-              const Text(
-                'Ustaw Powiadomienia!',
-                style: TextStyle(
+              Text(
+                AppLocalizations.of(context).setNotifications,
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
                 ),
               ),
               const SizedBox(height: 20),
-              const NotificationContainer(
+              NotificationContainer(
                 dropImage: 'lib/images/jordanUNC.jpg',
-                dropTime: '35m temu',
+                dropTime: AppLocalizations.of(context).thirtyFiveMinutesAgo,
                 dropName: 'Jordan 1 Retro High OG UNC Toe',
-                dropDescription: 'Drop o godzinie 9:00!',
+                dropDescription: AppLocalizations.of(context).dropAtNine,
               ),
               const SizedBox(height: 20),
-              const NotificationContainer(
+              NotificationContainer(
                 dropImage: 'lib/images/jordanTravis.webp',
-                dropTime: '1h temu',
+                dropTime: AppLocalizations.of(context).oneHourAgo,
                 dropName: 'Air Jordan 1 Retro High Travis Scott',
-                dropDescription: 'Drop o godzinie 12:30!',
+                dropDescription:
+                    AppLocalizations.of(context).dropAtTwelveThirty,
               ),
               const SizedBox(height: 24),
-              const Text(
-                'Wybierz rodzaje powiadomień, które chcesz otrzymywać.',
-                style: TextStyle(
+              Text(
+                AppLocalizations.of(context)
+                    .selectTheTypesOfNotificationsYouWantToReceive,
+                style: const TextStyle(
                   fontSize: 16,
                   color: Colors.black,
                 ),
