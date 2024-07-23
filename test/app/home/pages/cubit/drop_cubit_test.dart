@@ -68,13 +68,14 @@ void main() {
     });
   });
   group('fetchAccessibleShoe', () {
+    final DateTime now = DateTime.now();
     group('succes', () {
       setUp(() {
         when(() => repository.getAccessibleShoeStream()).thenAnswer(
           (_) => Stream.value(
             [
               AccessibleShoeDropModel(
-                  'name', 'price', 'imagePath', 'description', 'dropLink'),
+                  'name', 'price', 'imagePath', 'description', now, 'dropLink'),
             ],
           ),
         );
@@ -89,7 +90,7 @@ void main() {
             status: Status.succes,
             accessibleShoe: [
               AccessibleShoeDropModel(
-                  'name', 'price', 'imagePath', 'description', 'dropLink'),
+                  'name', 'price', 'imagePath', 'description', now, 'dropLink'),
             ],
           )
         ],

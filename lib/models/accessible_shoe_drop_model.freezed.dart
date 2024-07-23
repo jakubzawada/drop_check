@@ -25,6 +25,8 @@ mixin _$AccessibleShoeDropModel {
   String get price => throw _privateConstructorUsedError;
   String get imagePath => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
+  @TimestampSerializer()
+  DateTime get dropTime => throw _privateConstructorUsedError;
   String get dropLink => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -44,6 +46,7 @@ abstract class $AccessibleShoeDropModelCopyWith<$Res> {
       String price,
       String imagePath,
       String description,
+      @TimestampSerializer() DateTime dropTime,
       String dropLink});
 }
 
@@ -65,6 +68,7 @@ class _$AccessibleShoeDropModelCopyWithImpl<$Res,
     Object? price = null,
     Object? imagePath = null,
     Object? description = null,
+    Object? dropTime = null,
     Object? dropLink = null,
   }) {
     return _then(_value.copyWith(
@@ -84,6 +88,10 @@ class _$AccessibleShoeDropModelCopyWithImpl<$Res,
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
+      dropTime: null == dropTime
+          ? _value.dropTime
+          : dropTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       dropLink: null == dropLink
           ? _value.dropLink
           : dropLink // ignore: cast_nullable_to_non_nullable
@@ -106,6 +114,7 @@ abstract class _$$AccessibleShoeDropModelImplCopyWith<$Res>
       String price,
       String imagePath,
       String description,
+      @TimestampSerializer() DateTime dropTime,
       String dropLink});
 }
 
@@ -126,6 +135,7 @@ class __$$AccessibleShoeDropModelImplCopyWithImpl<$Res>
     Object? price = null,
     Object? imagePath = null,
     Object? description = null,
+    Object? dropTime = null,
     Object? dropLink = null,
   }) {
     return _then(_$AccessibleShoeDropModelImpl(
@@ -145,6 +155,10 @@ class __$$AccessibleShoeDropModelImplCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
+      null == dropTime
+          ? _value.dropTime
+          : dropTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       null == dropLink
           ? _value.dropLink
           : dropLink // ignore: cast_nullable_to_non_nullable
@@ -156,8 +170,8 @@ class __$$AccessibleShoeDropModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$AccessibleShoeDropModelImpl implements _AccessibleShoeDropModel {
-  _$AccessibleShoeDropModelImpl(
-      this.name, this.price, this.imagePath, this.description, this.dropLink);
+  _$AccessibleShoeDropModelImpl(this.name, this.price, this.imagePath,
+      this.description, @TimestampSerializer() this.dropTime, this.dropLink);
 
   factory _$AccessibleShoeDropModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$AccessibleShoeDropModelImplFromJson(json);
@@ -171,11 +185,14 @@ class _$AccessibleShoeDropModelImpl implements _AccessibleShoeDropModel {
   @override
   final String description;
   @override
+  @TimestampSerializer()
+  final DateTime dropTime;
+  @override
   final String dropLink;
 
   @override
   String toString() {
-    return 'AccessibleShoeDropModel(name: $name, price: $price, imagePath: $imagePath, description: $description, dropLink: $dropLink)';
+    return 'AccessibleShoeDropModel(name: $name, price: $price, imagePath: $imagePath, description: $description, dropTime: $dropTime, dropLink: $dropLink)';
   }
 
   @override
@@ -189,14 +206,16 @@ class _$AccessibleShoeDropModelImpl implements _AccessibleShoeDropModel {
                 other.imagePath == imagePath) &&
             (identical(other.description, description) ||
                 other.description == description) &&
+            (identical(other.dropTime, dropTime) ||
+                other.dropTime == dropTime) &&
             (identical(other.dropLink, dropLink) ||
                 other.dropLink == dropLink));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, name, price, imagePath, description, dropLink);
+  int get hashCode => Object.hash(
+      runtimeType, name, price, imagePath, description, dropTime, dropLink);
 
   @JsonKey(ignore: true)
   @override
@@ -219,6 +238,7 @@ abstract class _AccessibleShoeDropModel implements AccessibleShoeDropModel {
       final String price,
       final String imagePath,
       final String description,
+      @TimestampSerializer() final DateTime dropTime,
       final String dropLink) = _$AccessibleShoeDropModelImpl;
 
   factory _AccessibleShoeDropModel.fromJson(Map<String, dynamic> json) =
@@ -232,6 +252,9 @@ abstract class _AccessibleShoeDropModel implements AccessibleShoeDropModel {
   String get imagePath;
   @override
   String get description;
+  @override
+  @TimestampSerializer()
+  DateTime get dropTime;
   @override
   String get dropLink;
   @override

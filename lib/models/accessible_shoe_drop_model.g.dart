@@ -13,6 +13,7 @@ _$AccessibleShoeDropModelImpl _$$AccessibleShoeDropModelImplFromJson(
       json['price'] as String,
       json['imagePath'] as String,
       json['description'] as String,
+      const TimestampSerializer().fromJson(json['dropTime']),
       json['dropLink'] as String,
     );
 
@@ -23,5 +24,6 @@ Map<String, dynamic> _$$AccessibleShoeDropModelImplToJson(
       'price': instance.price,
       'imagePath': instance.imagePath,
       'description': instance.description,
+      'dropTime': const TimestampSerializer().toJson(instance.dropTime),
       'dropLink': instance.dropLink,
     };
