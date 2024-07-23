@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:drop_check/models/accessible_shoe_drop_model.dart';
-import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -14,11 +13,6 @@ class AccessibleShoeDetailPage extends StatelessWidget {
     if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
       throw 'Could not launch $url';
     }
-  }
-
-  String formatDropTime(DateTime dateTime) {
-    DateFormat formatter = DateFormat('dd.MM | HH:mm');
-    return formatter.format(dateTime);
   }
 
   @override
@@ -63,14 +57,6 @@ class AccessibleShoeDetailPage extends StatelessWidget {
               style: TextStyle(
                 fontSize: 15.0,
                 color: Colors.grey[700],
-              ),
-            ),
-            const SizedBox(height: 16.0),
-            Text(
-              'DropTime: ${formatDropTime(accessibleShoe.dropTime)}',
-              style: TextStyle(
-                fontSize: 16.0,
-                color: Colors.grey[600],
               ),
             ),
             const SizedBox(height: 16.0),
