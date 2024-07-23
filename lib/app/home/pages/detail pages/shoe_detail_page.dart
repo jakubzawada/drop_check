@@ -27,7 +27,7 @@ class ShoeDetailPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(shoe.name),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
