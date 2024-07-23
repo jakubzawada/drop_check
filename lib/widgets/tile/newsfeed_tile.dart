@@ -40,8 +40,8 @@ class NewsfeedTile extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           child: AspectRatio(
             aspectRatio: 16 / 9,
-            child: Image.network(
-              newsfeed.imagePath,
+            child: Image.asset(
+              'lib/images/${newsfeed.imagePath}',
               fit: BoxFit.cover,
             ),
           ),
