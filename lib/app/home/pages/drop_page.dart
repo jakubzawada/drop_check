@@ -44,7 +44,9 @@ class DropPage extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 20),
-                ShoeList(showAccessible: state.showAccessible),
+                Expanded(
+                  child: ShoeList(showAccessible: state.showAccessible),
+                ),
               ],
             ),
           );

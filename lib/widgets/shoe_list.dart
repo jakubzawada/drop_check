@@ -17,46 +17,31 @@ class ShoeList extends StatelessWidget {
       create: (context) => getIt()
         ..fetchShoe()
         ..fetchAccessibleShoe(),
-      child: Expanded(
-        child: showAccessible
-            ? BlocBuilder<DropCubit, DropState>(
-                builder: (context, state) {
-                  if (state.status == Status.loading) {
-                    return const Center(child: CircularProgressIndicator());
-                  } else if (state.status == Status.succes) {
-                    return Column(
-                      children: state.accessibleShoe.map((accessibleShoe) {
-                        return AccessibleShoeDropTile(
-                          accessibleShoe: accessibleShoe,
-                        );
-                      }).toList(),
-                    );
-                  } else if (state.status == Status.error) {
-                    return Center(child: Text(state.errorMessage));
-                  } else {
-                    return const Center(child: Text('No data'));
-                  }
-                },
-              )
-            : BlocBuilder<DropCubit, DropState>(
-                builder: (context, state) {
-                  if (state.status == Status.loading) {
-                    return const Center(child: CircularProgressIndicator());
-                  } else if (state.status == Status.succes) {
-                    return Column(
-                      children: state.shoe.map((shoe) {
-                        return ShoeDropTile(
-                          shoe: shoe,
-                        );
-                      }).toList(),
-                    );
-                  } else if (state.status == Status.error) {
-                    return Center(child: Text(state.errorMessage));
-                  } else {
-                    return const Center(child: Text('No data'));
-                  }
-                },
-              ),
+      child: BlocBuilder<DropCubit, DropState>(
+        builder: (context, state) {
+          if (state.status == Status.loading) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (state.status == Status.succes) {
+            return ListView(
+              shrinkWrap: true,
+              children: showAccessible
+                  ? state.accessibleShoe.map((accessibleShoe) {
+                      return AccessibleShoeDropTile(
+                        accessibleShoe: accessibleShoe,
+                      );
+                    }).toList()
+                  : state.shoe.map((shoe) {
+                      return ShoeDropTile(
+                        shoe: shoe,
+                      );
+                    }).toList(),
+            );
+          } else if (state.status == Status.error) {
+            return Center(child: Text(state.errorMessage));
+          } else {
+            return const Center(child: Text('No data'));
+          }
+        },
       ),
     );
   }

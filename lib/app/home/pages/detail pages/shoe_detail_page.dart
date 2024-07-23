@@ -61,7 +61,7 @@ class ShoeDetailPage extends StatelessWidget {
             Text(
               shoe.description,
               style: TextStyle(
-                fontSize: 16.0,
+                fontSize: 15.0,
                 color: Colors.grey[700],
               ),
             ),
